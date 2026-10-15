@@ -1,0 +1,43 @@
+# Dependências
+node_modules/
+
+# Saída do electron-builder (npm run dist)
+dist/
+out/
+release/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variáveis de ambiente e segredos
+.env
+.env.*
+
+# Arquivos temporários
+*.tmp
+*.tmp.*
+tmp/
+temp/
+
+# Mídias e exports de teste (gerados localmente)
+*.mp4
+*.webm
+*.mov
+*.lccut
+
+# Modelos de IA baixados localmente (o app usa userData/models)
+models/
+*.onnx
+
+# Sistema operacional
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+.idea/
+*.swp

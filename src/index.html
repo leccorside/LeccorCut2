@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="LeccorCut - editor de vídeo desktop">
+<title>LeccorCut</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header id="topbar">
+  <div class="logo">Leccor<span>Cut</span></div>
+  <div class="actions">
+    <select id="quickPreset" title="Predefinições Rápidas de Plataforma">
+      <option value="custom" disabled selected>Plataforma...</option>
+      <option value="tiktok">📱 TikTok / Reels (9:16)</option>
+      <option value="youtube">🎥 YouTube (16:9)</option>
+      <option value="youtube4k">🎬 YouTube 4K (16:9)</option>
+      <option value="instagram_feed">📸 Feed (1:1)</option>
+      <option value="instagram_portrait">📐 Retrato (4:5)</option>
+    </select>
+    <select id="expAspect" title="Proporção"><option>16:9</option><option>9:16</option><option>1:1</option><option>4:5</option></select>
+    <select id="expRes" title="Resolução"><option value="720">720p</option><option value="1080" selected>1080p</option><option value="1440">1440p</option><option value="2160">4K</option></select>
+    <select id="expFps" title="FPS"><option>24</option><option selected>30</option><option>60</option></select>
+    <select id="expQ" title="Qualidade"><option value="23">Normal</option><option value="18" selected>Alta</option><option value="14">Máxima</option></select>
+    <button id="btnOpen">Abrir</button>
+    <button id="btnSave">Salvar</button>
+    <button id="btnExport" class="primary">Exportar</button>
+  </div>
+</header>
+<main id="workspace">
+  <section id="mediaPanel" class="panel">
+    <h2>Mídia</h2>
+    <button id="btnImport" class="primary wide">+ Importar</button>
+    <div id="mediaList"></div>
+  </section>
+  <section id="previewPanel" class="panel">
+    <div id="stage">
+      <div id="rmbgBack" hidden></div>
+      <video id="bgPlayer" muted hidden></video>
+      <img id="bgImg" hidden>
+      <video id="player" muted></video>
+      <img id="imgPlayer" hidden>
+      <video id="ovPlayer" muted hidden></video>
+      <img id="ovImg" hidden>
+      <div id="vignetteLayer" hidden></div>
+      <div id="textLayer"></div>
+    </div>
+    <div class="transport">
+      <button id="btnPlay">▶</button>
+      <span id="timeLabel">00:00.0 / 00:00.0</span>
+    </div>
+  </section>
+  <section id="propsPanel" class="panel">
+    <h2>Propriedades</h2>
+    <div id="props"><p class="hint">Selecione um clipe na timeline.</p></div>
+    <h2>Texto</h2>
+    <input id="txtInput" placeholder="Digite o texto">
+    <div class="row"><input id="txtColor" type="color" value="#ffffff"><input id="txtSize" type="number" value="48" min="10" max="200"></div>
+    <button id="btnAddText" class="wide">Adicionar texto no cursor</button>
+    <button id="btnSrt" class="wide">Importar legendas (.srt)</button>
+    <select id="asrLang"><option value="portuguese">Português</option><option value="english">English</option><option value="spanish">Español</option></select>
+    <button id="btnAuto" class="wide primary">Legendas automáticas (Whisper)</button>
+  </section>
+</main>
+<section id="timelineWrap">
+  <div class="tl-tools">
+    <button id="btnUndo" title="Desfazer (Ctrl+Z)">↶</button>
+    <button id="btnRedo" title="Refazer (Ctrl+Y)">↷</button>
+    <button id="btnSnap" class="active" title="Alinhamento Magnético / Snap (N)">🧲 Snap</button>
+    <button id="btnMarker" title="Adicionar ou Alternar Marcador na agulha (M)">🏷️ Marcador (M)</button>
+    <button id="btnSplit">✂ Dividir (S)</button>
+    <button id="btnFreeze" title="Congelar Quadro no cursor (F)">❄ Congelar (F)</button>
+    <button id="btnDelete">🗑 Excluir (Del)</button>
+    <label>Zoom <input id="zoom" type="range" min="20" max="200" value="60"></label>
+  </div>
+  <div id="timelineBody">
+    <div id="trackHeaders">
+      <div class="track-header-spacer"></div>
+      <div class="track-header" id="thGroupVideo">
+        <span class="track-title">🎬 Vídeo</span>
+        <div class="track-btns">
+          <button id="thEyeVideo" class="th-btn" title="Ocultar/Exibir Vídeo">👁</button>
+          <button id="thMuteVideo" class="th-btn" title="Mutar Áudio dos Clipes">🔊</button>
+        </div>
+      </div>
+      <div class="track-header" id="thGroupOverlay">
+        <span class="track-title">🖼 Sobreposição</span>
+        <div class="track-btns">
+          <button id="thEyeOverlay" class="th-btn" title="Ocultar/Exibir PiP">👁</button>
+        </div>
+      </div>
+      <div class="track-header" id="thGroupText">
+        <span class="track-title">🔤 Texto</span>
+        <div class="track-btns">
+          <button id="thEyeText" class="th-btn" title="Ocultar/Exibir Texto">👁</button>
+        </div>
+      </div>
+      <div class="track-header" id="thGroupAudio">
+        <span class="track-title">🎵 Áudio</span>
+        <div class="track-btns">
+          <button id="thMuteAudio" class="th-btn" title="Mutar Áudio">🔊</button>
+          <button id="thSoloAudio" class="th-btn" title="Solo Áudio">🎧</button>
+        </div>
+      </div>
+    </div>
+    <div id="timeline">
+      <div id="ruler"></div>
+      <div id="snapGuide" hidden></div>
+      <div id="trackVideo" class="track"></div>
+      <div id="trackOverlay" class="track"></div>
+      <div id="trackText" class="track"></div>
+      <div id="trackAudio" class="track"></div>
+      <div id="playhead"></div>
+    </div>
+  </div>
+</section>
+<audio id="bgAudio"></audio>
+<div id="toast" hidden></div>
+<script src="renderer.js"></script>
+</body>
+</html>
