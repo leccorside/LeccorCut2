@@ -56,12 +56,14 @@
 ## 🏗️ Fase 2 — Análise de Arquitetura e Componentes
 
 ### 2.1 Processo de Inicialização (Bootstrap)
-- [ ] Rastrear fluxo de inicialização do `JianyingLauncher.exe` → `CapCut.exe`
-- [ ] Mapear comunicação entre launcher e `bun.exe` (runtime JS)
-- [ ] Entender papel do `agent_runtime_addon.node` (521KB) — bridge Node.js/Nativo
-- [ ] Analisar `taskcontainer.exe` (44KB) — container de processos filhos
-- [ ] Analisar papel do `ttdaemon.exe` (daemon TikTok services)
-- [ ] Mapear IPC entre processos: launcher ↔ renderer ↔ native services
+> Resultados da Fase 2: [analise/fase2/](analise/fase2/) — `2.1-2.2-bootstrap-ui.md`, `2.3-motor-edicao.md`, `2.4-2.5-ia-audio.md`
+
+- [x] Rastrear fluxo de inicialização do `JianyingLauncher.exe` → `CapCut.exe` (o launcher **é** o `Apps\CapCut.exe` renomeado; despacho por linha de comando para `VECreator.dll!entryPoint`, `CefCreator.dll` ou `<serviço>.dll`)
+- [x] Mapear comunicação entre launcher e `bun.exe` (Bun 1.3.14 rodando `app-server.mjs` em 127.0.0.1:5174/5175, ~150 variáveis `COMMON_AGENT_*`)
+- [x] Entender papel do `agent_runtime_addon.node` (521KB) — N-API: watchdog do processo pai, logs/crash e sandbox de ferramentas (`vm_sdk.dll`)
+- [x] Analisar `taskcontainer.exe` (44KB) — benchmark de hardware (ByteBench) via TCP local
+- [x] Analisar papel do `ttdaemon.exe` — teste de codecs de GPU (NVENC/QSV/AMF/DXVA) → `ve_hw_check.ini`
+- [~] Mapear IPC entre processos: canais mapeados (Mojo 49 interfaces, CEF `cefQuery`, HTTP/SSE local, pipe `vecreator-lyra-cli-v1`, memória compartilhada do preview); falta confirmar o processo de cada serviço Mojo (exige análise dinâmica — Fase 4)
 
 ### 2.2 Arquitetura da UI (Multi-Framework)
 - [x] Identificar Qt6 como framework de janela principal
@@ -69,22 +71,22 @@
 - [x] Identificar Lynx como framework de UI mobile-style (lynx.dll 24MB)
 - [x] Identificar Video Studio como app React/Vite embutida
 - [x] Identificar Common Agent como sub-app React/Vite embutida
-- [ ] Entender como Qt ↔ CEF ↔ Lynx coexistem na mesma janela
-- [ ] Mapear IPC Qt ↔ CEF (JavaScript Bridge, `window.capcut.*` APIs)
-- [ ] Analisar bundle JS `index-DJ4o9hAr.js` (241KB) — entry point lógica
-- [ ] Analisar bundle JS `services-Bqx5Pz17.js` (50KB) — serviços de API
-- [ ] Documentar API JavaScript exposta pelo bridge C++ → JS
+- [x] Entender como Qt ↔ CEF ↔ Lynx coexistem na mesma janela (Qt 6.2.2/QML no editor; CEF 121 via `PlatinumWebView.dll`; Lynx 3.9 em janelas próprias)
+- [x] Mapear IPC Qt ↔ CEF (não há `window.capcut.*`: a ponte é `window.cefQuery` com ~79 + ~42 + ~45 `callType`s)
+- [x] Analisar bundle JS `index-DJ4o9hAr.js` (241KB) — React 19, sem roteador, tela por `?surface=`
+- [x] Analisar bundle JS `services-Bqx5Pz17.js` (50KB) — SDK de cobrança/assinatura (requisições assinadas pelo nativo)
+- [x] Documentar API JavaScript exposta pelo bridge C++ → JS
 
 ### 2.3 Motor de Edição de Vídeo (VECreator / videoeditor)
-- [ ] Mapear funções exportadas de `VECreator.dll` (271MB)
-- [ ] Mapear funções exportadas de `videoeditor.dll` (72MB)
-- [ ] Mapear funções exportadas de `cccreator.dll` (158MB)
-- [ ] Entender estrutura interna de um "Draft" (projeto salvo)
-- [ ] Identificar formato binário do projeto CapCut
-- [ ] Mapear pipeline: Track → Clip → Effect → Filter
-- [ ] Mapear pipeline de renderização: Timeline → Compositor → FFmpeg encoder
-- [ ] Analisar `lens.dll` (88MB) — engine de filtros e efeitos em tempo real
-- [ ] Analisar integração com FFmpeg (`avcodec-61.dll`)
+- [x] Mapear funções exportadas de `VECreator.dll` (271MB) — por classe; corpo das funções sob VMProtect
+- [x] Mapear funções exportadas de `videoeditor.dll` (72MB) — `lvve::*` (Transfers, Attachment*Control, PlayerWin) + Ghidra
+- [x] Mapear funções exportadas de `cccreator.dll` (158MB) — `bef_*`, `AmazingEngine`, `Bach`, `vesdk::ccmodel`
+- [x] Entender estrutura interna de um "Draft" (projeto salvo) — JSON: `tracks → segments → material_id + extra_material_refs`, tempos em µs
+- [x] Identificar formato binário do projeto CapCut — não é binário; existe cifra opcional (`DRAFT_IO_MANAGER`, KV2, Crypto++), não usada nos projetos locais
+- [x] Mapear pipeline: Track → Clip → Effect → Filter (catálogo de 60 `CC*Filter`)
+- [x] Mapear pipeline de renderização: grafo de Bins/Units `TE*` (Demux → Decode → GPUPreProcess → efeitos → Compile → Output/Transcode)
+- [x] Analisar `lens.dll` (88MB) — runtime NN "lighten" (IR bytenn) + VFI, HDR, deflicker, denoise NN, motion blur, estabilização
+- [x] Analisar integração com FFmpeg (`avcodec-61.dll`) — FFmpeg 7 modificado + `ffmpeg.dll` com `ffmpeg_main` como biblioteca + ByteVC1/QSV/SVT-AV1
 
 ### 2.4 Motor de IA e Modelos
 - [x] Identificar modelos de matting (remoção de fundo local)
@@ -97,18 +99,18 @@
 - [x] Identificar modelos generativos de vídeo via cloud (SeedDance 2.0/2.5, MiniMax H3, Gemini)
 - [x] Identificar modelos de imagem via cloud (SeedDream 4.x/5, GPT-Image2, NanoBanana)
 - [x] Identificar modelo de invisible watermark local
-- [ ] Analisar `deepagents_capi.dll` — C API para modelos de IA
-- [ ] Analisar `metasecml.dll` — framework ML
-- [ ] Mapear como modelos `.model` e `.bytenn` são carregados em runtime
-- [ ] Identificar quais modelos são locais vs. cloud (API)
-- [ ] Analisar `SegmentJS/` — segmentação via JavaScript/WASM
+- [x] Analisar `deepagents_capi.dll` — C API para modelos de IA (Go/Eino via `DeepAgentsService.dll` + Mojo; 61 ferramentas nativas; SQLite `deepagent.db`)
+- [x] Analisar `metasecml.dll` — **não é framework de ML**: é o SDK de segurança MSSDK (assinatura de requisições); binário empacotado, análise parou no papel
+- [x] Mapear como modelos `.model` e `.bytenn` são carregados em runtime (config do efeito → `Resources/models` → cache → download `/model/api/arithmetics`; ByteNN com CPU/OpenCL/OpenVINO/TensorRT)
+- [x] Identificar quais modelos são locais vs. cloud (API)
+- [x] Analisar `SegmentJS/` — **não é segmentação nem WASM**: runtime JS de texto/legenda animados (`ccc_segment_js`)
 
 ### 2.5 Processamento de Áudio
-- [ ] Mapear exports de `audioeffect.dll` (14MB)
-- [ ] Analisar `speechsdk.dll` (8.3MB) — reconhecimento de voz
-- [ ] Analisar `lyra_cli_client.dll` (10.8MB) — codec Lyra (Google)
-- [ ] Mapear pipeline: waveform → effects → export
-- [ ] Identificar algoritmos de denoise, normalização, separação de stems
+- [x] Mapear exports de `audioeffect.dll` (14MB) — `mammon` (DSP), `mammonengine` (grafo de nós), `AudioCleaner`, `sami`
+- [x] Analisar `speechsdk.dll` (8.3MB) — reconhecimento de voz
+- [x] Analisar `lyra_cli_client.dll` (10.8MB) — **não é o codec Lyra do Google**: CLI interno de edição (`lyra-cli draft/media/material…`)
+- [x] Mapear pipeline: waveform → effects → export (151 funções do audioeffect importadas pelo cccreator, agrupadas)
+- [x] Identificar algoritmos de denoise, normalização, separação de stems (local: RNNoise/AudioCleaner, libebur128, madmom; cloud: stems, TTS, ASR)
 
 ---
 
@@ -195,7 +197,7 @@
 | Fase | Progresso | Prioridade |
 |------|-----------|------------|
 | Fase 1 — Reconhecimento Estático | 🟢 Concluída (100%) | 🔴 Alta |
-| Fase 2 — Arquitetura e Componentes | 🔴 Iniciado (25%) | 🔴 Alta |
+| Fase 2 — Arquitetura e Componentes | 🟢 Concluída (97% — IPC por processo fica para a Fase 4) | 🔴 Alta |
 | Fase 3 — Rede e APIs | 🔴 Iniciado (20%) | 🟡 Média |
 | Fase 4 — Análise Dinâmica | ⚪ Não iniciado | 🟡 Média |
 | Fase 5 — Aplicação ao LeccorCut | 🟡 Em andamento (40%) | 🟢 Contínuo |

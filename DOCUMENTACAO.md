@@ -427,4 +427,49 @@ Relatório completo, tabelas e método: [analise/fase1/RELATORIO.md](analise/fas
 
 ---
 
-*Gerado em: 2026-10-15 | Fonte: análise estática de strings, recursos e manifests do CapCut v9.6.0.4097 | Seção 12: tabelas PE (pefile) e strings categorizadas*
+## 13. Fase 2 — Arquitetura e componentes (concluída)
+
+Relatórios completos em [analise/fase2/](analise/fase2/): `2.1-2.2-bootstrap-ui.md`, `2.3-motor-edicao.md`, `2.4-2.5-ia-audio.md`.
+
+### 13.1 Processos e inicialização
+
+```
+Apps\CapCut.exe (= JianyingLauncher renomeado; lê Configure.ini/ProductInfo.xml)
+  └─ 9.6.0.4097\CapCut.exe ── sem argumentos ─────────► VECreator.dll!entryPoint (app Qt)
+                           ├─ --type=renderer|gpu|utility ► CefCreator.dll (CEF 121)
+                           └─ --service-name=X ─────────► X.dll (ex.: DeepAgentsService.dll)
+VECreator ─► bun.exe app-server.mjs (127.0.0.1:5174/5175) + agent_runtime_addon.node
+VECreator ─► taskcontainer.exe (benchmark ByteBench) · ttdaemon.exe (teste de codecs GPU)
+```
+
+- IPC: Mojo (49 interfaces), `cefQuery` (CEF), HTTP/SSE local (Bun), pipe `vecreator-lyra-cli-v1`, memória compartilhada `Local\ExternalVideo.*` para o preview.
+- UI: Qt 6.2.2/QML (editor), CEF 121 via `PlatinumWebView.dll` (telas web React 19), Lynx 3.9 (telas comerciais em janela própria). Não existe `window.capcut.*`.
+
+### 13.2 Motor de edição e draft
+
+- Draft = **JSON** (`draft_content.json` + `draft_meta_info.json` + `attachment_*.json` + `Timelines/<uuid>/`); `tracks[] → segments[] → material_id + extra_material_refs[]`; `source_timerange`/`target_timerange` em **µs**; ~57 categorias em `materials`. Cifra opcional (KV2/Crypto++) existe no código, mas os projetos locais estão em claro.
+- Pipeline: `lvve` (draft) → `vesdk::ccmodel` (60 `CC*Filter`) → `AmazingEngine`/BEF → grafo `TE*` Bins/Units (Demux → Decode → GPUPreProcess → efeitos → Compile → Output/Transcode), OpenGL via ANGLE.
+- `lens.dll`: runtime NN "lighten" (IR bytenn) + VFI, SDR→HDR, deflicker, denoise NN, motion blur, estabilização.
+- FFmpeg 7 **modificado** (usa `ff_hevc_*` internos) + `ffmpeg.dll` com `ffmpeg_main` como biblioteca; ByteVC1, oneVPL/QSV, SVT-AV1.
+
+### 13.3 IA e áudio
+
+- `deepagents_capi.dll` é carregada pelo `DeepAgentsService.dll` (processo de serviço) via `da_get_api_table(abi)`; 61 ferramentas nativas do editor expostas ao agente; histórico em SQLite.
+- Modelos: 108 locais (230 MB) + baixados sob demanda em `User Data\Cache\effect\model\`; formatos Bach (com `MainSystem.js`), ByteNN (`"BM"`), cabeçalho ofuscado e SAMI cifrado; inferência ByteNN com CPU/OpenCL/OpenVINO/TensorRT.
+- Áudio (`audioeffect.dll`): local = denoise (RNNoise/AudioCleaner), loudness (libebur128), beat (madmom), time-stretch; **nuvem** = separação de stems, TTS, ASR de legendas, conversão de voz.
+
+### 13.4 Correções a seções anteriores
+
+| Seção | Antes | Correção (Fase 2) |
+|---|---|---|
+| 12 / RELATORIO Fase 1 | Imports do `VECreator.dll`: 23 DLLs | Lista incompleta por causa do VMProtect; strings mostram também `PlatinumWebView`, `cccreator`, `videoeditor`, `bd_mojo`, `metasecml` |
+| 7 | `metasecml.dll` = framework ML | SDK de segurança (MSSDK: device id, assinatura de requisições) |
+| 7 | `nn_denoise.bytenn` = denoise de áudio | Denoise de **vídeo** |
+| 7 | `deflicker/`, `umvfi/` como modelos locais do Windows | Só shaders Metal (macOS); no Windows o algoritmo está no `lens.dll` |
+| 7 | Vários modelos listados como empacotados | Não existem em disco; são baixados sob demanda |
+| 8 | `SegmentJS/` = segmentação via JS/WASM | Runtime JS de texto/legendas animadas |
+| 11 | `lyra_cli_client.dll` = codec | CLI interno de edição (`lyra-cli draft/media/material`) — confirmado |
+
+---
+
+*Gerado em: 2026-10-15 | Fonte: análise estática de strings, recursos e manifests do CapCut v9.6.0.4097 | Seção 12: tabelas PE (pefile) e strings categorizadas | Seção 13: Fase 2 (estática + esquema de drafts locais + Ghidra)*

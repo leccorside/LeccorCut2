@@ -36,6 +36,10 @@ models/
 # regenerar com analise/scripts/*.py)
 analise/**/raw/
 
+# Python
+__pycache__/
+*.pyc
+
 # Sistema operacional
 Thumbs.db
 desktop.ini

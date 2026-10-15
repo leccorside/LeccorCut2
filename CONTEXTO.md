@@ -83,6 +83,14 @@ via engenharia reversa estática com as ferramentas **REA v6.4.0** + **Ghidra 12
 - `deepagents_capi.dll` é **Go** (CloudWeGo Eino), com API C `da_*` e provedores OpenAI/Anthropic/Gemini/Ark/Coze/OpenRouter.
 - O roteiro citava `commonagent/assets/App-*.js`, que não existe; a lógica do commonagent está em `renderApp-*.js`.
 
+### Fase 2 — Arquitetura e componentes (2026-10-15)
+
+- Relatórios: `analise/fase2/2.1-2.2-bootstrap-ui.md`, `2.3-motor-edicao.md`, `2.4-2.5-ia-audio.md`; resumo na seção 13 da `DOCUMENTACAO.md`.
+- Método: 2.1/2.2 e 2.4/2.5 feitas por dois agentes em paralelo (estático, sem executar o CapCut); 2.3 feita a partir do **esquema** dos drafts locais do usuário (`analise/scripts/draft_schema.py` — não grava caminhos/nomes/textos) + strings do cccreator/lens + Ghidra headless no `videoeditor.dll` (`analise/scripts/ghidra/DraftRefs.java`).
+- Principais conclusões: launcher = JianyingLauncher renomeado, que despacha para `VECreator.dll!entryPoint`/`CefCreator.dll`/serviços; Bun em 127.0.0.1:5174/5175; UI Qt 6.2.2 + CEF 121 (`PlatinumWebView`) + Lynx 3.9; draft em JSON com tempos em µs (cifra opcional KV2 não usada localmente); motor em grafo `TE*` Bins/Units; FFmpeg 7 modificado + `ffmpeg_main` como biblioteca; modelos via ByteNN; stems/TTS/ASR na nuvem.
+- Correções a hipóteses anteriores: `metasecml.dll` é SDK de segurança (não ML); `SegmentJS` é runtime de texto animado (não segmentação); `nn_denoise.bytenn` é denoise de vídeo; imports do VECreator lidos pelo pefile estavam incompletos (VMProtect).
+- Pendente: confirmar em qual processo roda cada serviço Mojo (só com análise dinâmica — Fase 4).
+
 ### Arquivos Gerados
 - [README.md](README.md) — Visão geral do repositório (app + análise), como rodar/empacotar, estrutura, limitações. Escrito a partir do código real de `src/` em 2026-10-15
 - [PASSOS.md](PASSOS.md) — Roteiro com checkboxes em 5 fases
@@ -95,8 +103,9 @@ via engenharia reversa estática com as ferramentas **REA v6.4.0** + **Ghidra 12
 
 ### Alta Prioridade
 - [x] Extrair imports/exports do `VECreator.dll` e `videoeditor.dll` (Fase 1, via pefile)
-- [ ] Análise de funções no Ghidra (Fase 2) — atenção: VECreator.dll tem VMProtect; começar por `videoeditor.dll` (draft) e `cccreator.dll` (API `bef_*`)
-- [ ] Identificar e documentar o formato completo do arquivo de draft (projeto salvo) — pistas: `draft_content.json` + `attachment_*.json`, Crypto++ no videoeditor.dll
+- [x] Análise de funções no Ghidra (Fase 2) — `videoeditor.dll` (VECreator.dll tem VMProtect)
+- [x] Identificar e documentar o formato completo do arquivo de draft — JSON, ver `analise/fase2/2.3-motor-edicao.md`
+- [ ] Fase 3 — rede/APIs (hosts já levantados na Fase 1) e Fase 4 — análise dinâmica (IPC por processo)
 - [ ] Mapear a base URL da API principal (domínio de produção)
 - [ ] Analisar o bridge JavaScript C++ → JS no CEF (`window.capcut.*`)
 - [ ] Analisar `agent_runtime_addon.node` (521KB) — bridge Node.js/Nativo
@@ -277,7 +286,7 @@ A lista "O que já foi implementado" acima descreve o projeto antigo (`D:\000000
 
 ## 📋 Próximos Passos Recomendados
 
-1. **Imediato**: Fase 2 — Ghidra no `videoeditor.dll` para mapear o formato de draft completo (exports/strings já extraídos na Fase 1)
+1. **Imediato**: Fase 5.3 — importador de projetos CapCut (`draft_content.json`) para `.lccut`, usando o esquema documentado na Fase 2; ou Fase 3 (rede/APIs)
 2. **Curto prazo**: Capturar tráfego de rede do CapCut com proxy MITM para documentar APIs completas
 3. **Médio prazo**: Implementar detecção de cenas e object tracking no LeccorCut
 4. **Longo prazo**: Migrar engine de renderização de FFmpeg CLI para pipeline nativo C++/WebGPU
