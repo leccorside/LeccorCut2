@@ -1,0 +1,1767 @@
+[
+ {
+  "arquivo": "CapCut.exe",
+  "tamanho": 4974504,
+  "maquina": "0x8664",
+  "timestamp_pe": 1779798076,
+  "secoes": [
+   [
+    ".text",
+    3227136
+   ],
+   [
+    ".rdata",
+    1307648
+   ],
+   [
+    ".data",
+    70144
+   ],
+   [
+    ".pdata",
+    163328
+   ],
+   [
+    ".idata",
+    20480
+   ],
+   [
+    ".didat",
+    2048
+   ],
+   [
+    "minATL",
+    1024
+   ],
+   [
+    ".tls",
+    1024
+   ],
+   [
+    ".00cfg",
+    512
+   ],
+   [
+    "_RDATA",
+    1024
+   ],
+   [
+    ".rsrc",
+    137728
+   ],
+   [
+    ".reloc",
+    28672
+   ]
+  ],
+  "dlls_importadas": 20,
+  "funcoes_importadas": 415,
+  "imports_por_dll": {
+   "KERNEL32.dll": {
+    "tipo": "normal",
+    "qtd": 252
+   },
+   "ADVAPI32.dll": {
+    "tipo": "normal",
+    "qtd": 55
+   },
+   "USER32.dll": {
+    "tipo": "normal",
+    "qtd": 33
+   },
+   "SHLWAPI.dll": {
+    "tipo": "normal",
+    "qtd": 19
+   },
+   "dbghelp.dll": {
+    "tipo": "normal",
+    "qtd": 10
+   },
+   "ole32.dll": {
+    "tipo": "normal",
+    "qtd": 9
+   },
+   "SHELL32.dll": {
+    "tipo": "normal",
+    "qtd": 6
+   },
+   "OLEAUT32.dll": {
+    "tipo": "normal",
+    "qtd": 4
+   },
+   "USERENV.dll": {
+    "tipo": "normal",
+    "qtd": 4
+   },
+   "PSAPI.DLL": {
+    "tipo": "normal",
+    "qtd": 4
+   },
+   "SETUPAPI.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "WINMM.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "WTSAPI32.dll": {
+    "tipo": "delay",
+    "qtd": 3
+   },
+   "VERSION.dll": {
+    "tipo": "delay",
+    "qtd": 3
+   },
+   "GDI32.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "PROPSYS.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "WS2_32.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "MPR.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "IPHLPAPI.DLL": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "POWRPROF.dll": {
+    "tipo": "delay",
+    "qtd": 1
+   }
+  },
+  "exports": 88,
+  "exports_top_escopos": [
+   [
+    "switches",
+    24
+   ],
+   [
+    "base",
+    15
+   ],
+   [
+    "base::WritableSharedMemoryRegion",
+    13
+   ],
+   [
+    "base::ReadOnlySharedMemoryRegion",
+    12
+   ],
+   [
+    "base::UnsafeSharedMemoryRegion",
+    12
+   ],
+   [
+    "base::trace_event",
+    6
+   ],
+   [
+    "base::trace_event::MemoryAllocatorDumpGuid",
+    2
+   ],
+   [
+    "absl::variant_internal",
+    1
+   ],
+   [
+    "logging",
+    1
+   ],
+   [
+    "absl::optional_internal",
+    1
+   ],
+   [
+    "(C / global)",
+    1
+   ]
+  ],
+  "exports_amostra": [
+   "??0MemoryAllocatorDumpGuid@trace_event@base@@QEAA@_K@Z",
+   "??0ReadOnlySharedMemoryRegion@base@@AEAA@VPlatformSharedMemoryRegion@subtle@1@@Z",
+   "??0ReadOnlySharedMemoryRegion@base@@QEAA@$$QEAV01@@Z",
+   "??0ReadOnlySharedMemoryRegion@base@@QEAA@XZ",
+   "??0UnsafeSharedMemoryRegion@base@@AEAA@VPlatformSharedMemoryRegion@subtle@1@@Z",
+   "??0UnsafeSharedMemoryRegion@base@@QEAA@$$QEAV01@@Z",
+   "??0UnsafeSharedMemoryRegion@base@@QEAA@XZ",
+   "??0WritableSharedMemoryRegion@base@@AEAA@VPlatformSharedMemoryRegion@subtle@1@@Z",
+   "??0WritableSharedMemoryRegion@base@@QEAA@$$QEAV01@@Z",
+   "??0WritableSharedMemoryRegion@base@@QEAA@XZ",
+   "??1ReadOnlySharedMemoryRegion@base@@QEAA@XZ",
+   "??1UnsafeSharedMemoryRegion@base@@QEAA@XZ",
+   "??1WritableSharedMemoryRegion@base@@QEAA@XZ",
+   "??4MemoryAllocatorDumpGuid@trace_event@base@@QEAAAEAV012@$$QEAV012@@Z",
+   "??4MemoryAllocatorDumpGuid@trace_event@base@@QEAAAEAV012@AEBV012@@Z",
+   "??4ReadOnlySharedMemoryRegion@base@@QEAAAEAV01@$$QEAV01@@Z",
+   "??4UnsafeSharedMemoryRegion@base@@QEAAAEAV01@$$QEAV01@@Z",
+   "??4WritableSharedMemoryRegion@base@@QEAAAEAV01@$$QEAV01@@Z",
+   "??8MemoryAllocatorDumpGuid@trace_event@base@@QEBA_NAEBV012@@Z",
+   "??9MemoryAllocatorDumpGuid@trace_event@base@@QEBA_NAEBV012@@Z",
+   "??MMemoryAllocatorDumpGuid@trace_event@base@@QEBA_NAEBV012@@Z",
+   "?ConvertToReadOnly@WritableSharedMemoryRegion@base@@SA?AVReadOnlySharedMemoryRegion@2@V12@@Z",
+   "?ConvertToUnsafe@WritableSharedMemoryRegion@base@@SA?AVUnsafeSharedMemoryRegion@2@V12@@Z",
+   "?Create@ReadOnlySharedMemoryRegion@base@@SA?AUMappedReadOnlyRegion@2@_K@Z",
+   "?Create@UnsafeSharedMemoryRegion@base@@SA?AV12@_K@Z",
+   "?Create@WritableSharedMemoryRegion@base@@SA?AV12@_K@Z",
+   "?Deserialize@ReadOnlySharedMemoryRegion@base@@SA?AV12@VPlatformSharedMemoryRegion@subtle@2@@Z",
+   "?Deserialize@UnsafeSharedMemoryRegion@base@@SA?AV12@VPlatformSharedMemoryRegion@subtle@2@@Z",
+   "?Deserialize@WritableSharedMemoryRegion@base@@SA?AV12@VPlatformSharedMemoryRegion@subtle@2@@Z",
+   "?Duplicate@ReadOnlySharedMemoryRegion@base@@QEBA?AV12@XZ",
+   "?Duplicate@UnsafeSharedMemoryRegion@base@@QEBA?AV12@XZ",
+   "?GetGUID@ReadOnlySharedMemoryRegion@base@@QEBAAEBVUnguessableToken@2@XZ",
+   "?GetGUID@UnsafeSharedMemoryRegion@base@@QEBAAEBVUnguessableToken@2@XZ",
+   "?GetGUID@WritableSharedMemoryRegion@base@@QEBAAEBVUnguessableToken@2@XZ",
+   "?GetPlatformHandle@ReadOnlySharedMemoryRegion@base@@QEBAPEAXXZ",
+   "?GetPlatformHandle@UnsafeSharedMemoryRegion@base@@QEBAPEAXXZ",
+   "?GetSize@ReadOnlySharedMemoryRegion@base@@QEBA_KXZ",
+   "?GetSize@UnsafeSharedMemoryRegion@base@@QEBA_KXZ",
+   "?GetSize@WritableSharedMemoryRegion@base@@QEBA_KXZ",
+   "?IsValid@ReadOnlySharedMemoryRegion@base@@QEBA_NXZ",
+   "?IsValid@UnsafeSharedMemoryRegion@base@@QEBA_NXZ",
+   "?IsValid@WritableSharedMemoryRegion@base@@QEBA_NXZ",
+   "?Map@ReadOnlySharedMemoryRegion@base@@QEBA?AVReadOnlySharedMemoryMapping@2@XZ",
+   "?Map@UnsafeSharedMemoryRegion@base@@QEBA?AVWritableSharedMemoryMapping@2@XZ",
+   "?Map@WritableSharedMemoryRegion@base@@QEBA?AVWritableSharedMemoryMapping@2@XZ",
+   "?MapAt@ReadOnlySharedMemoryRegion@base@@QEBA?AVReadOnlySharedMemoryMapping@2@J_K@Z",
+   "?MapAt@UnsafeSharedMemoryRegion@base@@QEBA?AVWritableSharedMemoryMapping@2@J_K@Z",
+   "?MapAt@WritableSharedMemoryRegion@base@@QEBA?AVWritableSharedMemoryMapping@2@J_K@Z",
+   "?TakeHandleForSerialization@ReadOnlySharedMemoryRegion@base@@SA?AVPlatformSharedMemoryRegion@subtle@2@V12@@Z",
+   "?TakeHandleForSerialization@UnsafeSharedMemoryRegion@base@@SA?AVPlatformSharedMemoryRegion@subtle@2@V12@@Z",
+   "?TakeHandleForSerialization@WritableSharedMemoryRegion@base@@SA?AVPlatformSharedMemoryRegion@subtle@2@V12@@Z",
+   "?ThrowBadVariantAccess@variant_internal@absl@@YAXXZ",
+   "?ToUint64@MemoryAllocatorDumpGuid@trace_event@base@@QEBA_KXZ",
+   "?UnsafeGetPlatformHandle@WritableSharedMemoryRegion@base@@QEBAPEAXXZ",
+   "?create_hook_@ReadOnlySharedMemoryRegion@base@@0P6A?AUMappedReadOnlyRegion@2@_K@ZEA",
+   "?create_hook_@UnsafeSharedMemoryRegion@base@@0P6A?AV12@_K@ZEA",
+   "?create_hook_@WritableSharedMemoryRegion@base@@0P6A?AV12@_K@ZEA",
+   "?empty@MemoryAllocatorDumpGuid@trace_event@base@@QEBA_NXZ",
+   "?g_swallow_stream@logging@@3PEAV?$basic_ostream@DU?$char_traits@D@std@@@std@@EA",
+   "?kDisableBestEffortTasks@switches@@3QBDB"
+  ]
+ },
+ {
+  "arquivo": "VECreator.dll",
+  "tamanho": 271139752,
+  "maquina": "0x8664",
+  "timestamp_pe": 1791435474,
+  "secoes": [
+   [
+    ".text",
+    126748160
+   ],
+   [
+    ".rdata",
+    113233920
+   ],
+   [
+    ".data",
+    6235648
+   ],
+   [
+    ".pdata",
+    4678144
+   ],
+   [
+    ".qtmetad",
+    3584
+   ],
+   [
+    ".detourc",
+    8704
+   ],
+   [
+    ".detourd",
+    512
+   ],
+   [
+    ".vmp0",
+    7982592
+   ],
+   [
+    ".vmp1",
+    98816
+   ],
+   [
+    ".vmp2",
+    10973696
+   ],
+   [
+    ".rsrc",
+    1536
+   ],
+   [
+    ".reloc",
+    1160192
+   ]
+  ],
+  "dlls_importadas": 23,
+  "funcoes_importadas": 4087,
+  "imports_por_dll": {
+   "Qt6Core.dll": {
+    "tipo": "normal",
+    "qtd": 1901
+   },
+   "Qt6Gui.dll": {
+    "tipo": "normal",
+    "qtd": 789
+   },
+   "FusionUI.dll": {
+    "tipo": "normal",
+    "qtd": 342
+   },
+   "Qt6Quick.dll": {
+    "tipo": "normal",
+    "qtd": 266
+   },
+   "Qt6Widgets.dll": {
+    "tipo": "normal",
+    "qtd": 223
+   },
+   "Qt6Network.dll": {
+    "tipo": "normal",
+    "qtd": 163
+   },
+   "Qt6Qml.dll": {
+    "tipo": "normal",
+    "qtd": 132
+   },
+   "nuro.dll": {
+    "tipo": "normal",
+    "qtd": 57
+   },
+   "lynx.dll": {
+    "tipo": "normal",
+    "qtd": 43
+   },
+   "clipflow_sdk.dll": {
+    "tipo": "normal",
+    "qtd": 38
+   },
+   "bytebench.dll": {
+    "tipo": "normal",
+    "qtd": 26
+   },
+   "res_pool.dll": {
+    "tipo": "normal",
+    "qtd": 19
+   },
+   "Qt6Concurrent.dll": {
+    "tipo": "normal",
+    "qtd": 16
+   },
+   "uploader.dll": {
+    "tipo": "normal",
+    "qtd": 13
+   },
+   "EffectPlatform.dll": {
+    "tipo": "normal",
+    "qtd": 12
+   },
+   "TTPGeckoCppSDK.dll": {
+    "tipo": "normal",
+    "qtd": 12
+   },
+   "Qt6Core5Compat.dll": {
+    "tipo": "normal",
+    "qtd": 10
+   },
+   "lyra_cli_client.dll": {
+    "tipo": "normal",
+    "qtd": 8
+   },
+   "pc_push.dll": {
+    "tipo": "normal",
+    "qtd": 7
+   },
+   "ever_cloud_sdk.dll": {
+    "tipo": "normal",
+    "qtd": 5
+   },
+   "CRYPT32.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "Qt6QuickControls2.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "deviceregister_shared.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   }
+  },
+  "exports": 1808,
+  "exports_top_escopos": [
+   [
+    "davinci::effectplatform::heycan",
+    275
+   ],
+   [
+    "vesdk::ccmodel::CCTextStickerFilter",
+    118
+   ],
+   [
+    "vesdk::ccmodel",
+    107
+   ],
+   [
+    "davinci::effectplatform::loki",
+    104
+   ],
+   [
+    "gecko_cpp",
+    63
+   ],
+   [
+    "vesdk::ccmodel::CCTransformFilter",
+    53
+   ],
+   [
+    "vesdk::ccmodel::CCStickerAnimationFilter",
+    50
+   ],
+   [
+    "vesdk::ccmodel::CCAmazingFilter",
+    37
+   ],
+   [
+    "davinci::effectplatform",
+    33
+   ],
+   [
+    "(C / global)",
+    33
+   ],
+   [
+    "vesdk::ccmodel::CCClip",
+    30
+   ],
+   [
+    "vesdk::ccmodel::CCBefEffectFilter",
+    26
+   ],
+   [
+    "vesdk::ccmodel::CCSwingPostProcessFilter",
+    24
+   ],
+   [
+    "vesdk::ccmodel::CCFilter",
+    23
+   ],
+   [
+    "vesdk::ccmodel::CCAiCutOutClipFilter",
+    22
+   ],
+   [
+    "vesdk::ccmodel::CCVideoCropFilter",
+    21
+   ],
+   [
+    "vesdk::ccmodel::CCInfoStickerFilter",
+    20
+   ],
+   [
+    "vesdk::ccmodel::CCAVClip",
+    20
+   ],
+   [
+    "vesdk::ccmodel::CCMotionBlurFilter",
+    20
+   ],
+   [
+    "vesdk::ccmodel::CCDigitalManFilter",
+    18
+   ],
+   [
+    "vesdk::ccmodel::CCAudioSamiFilter",
+    18
+   ],
+   [
+    "vesdk::ccmodel::CCVideoAnimationFilter",
+    16
+   ],
+   [
+    "vesdk::ccmodel::CCVideoCanvasFilter",
+    16
+   ],
+   [
+    "vesdk::ccmodel::CCLensVFIFilter",
+    16
+   ],
+   [
+    "vesdk::ccmodel::CCObjectTrackerFilter",
+    16
+   ],
+   [
+    "davinci::effectplatform::loki::VEffect::V?$vector",
+    14
+   ],
+   [
+    "davinci::effectplatform::heycan::VAddToFavoriteListResponse",
+    14
+   ],
+   [
+    "davinci::effectplatform::loki::VAlgorithmModelRecord",
+    14
+   ],
+   [
+    "davinci::effectplatform::loki::VAlgorithmModelRecordList",
+    14
+   ],
+   [
+    "davinci::effectplatform::loki::VCategoryPageResponseModel",
+    14
+   ],
+   [
+    "davinci::effectplatform::heycan::VCategoryResourceResponseModel",
+    14
+   ],
+   [
+    "davinci::effectplatform::loki::VCheckUpdateResponseModel",
+    14
+   ],
+   [
+    "davinci::effectplatform::heycan::VEffect",
+    14
+   ],
+   [
+    "davinci::effectplatform::loki::VEffect",
+    14
+   ],
+   [
+    "davinci::effectplatform::loki::VEffectChannelResponseModel",
+    14
+   ],
+   [
+    "davinci::effectplatform::heycan::VEffectListResponse",
+    14
+   ],
+   [
+    "davinci::effectplatform::loki::VEffectListResponseModel",
+    14
+   ],
+   [
+    "davinci::effectplatform::heycan::VFetchFavoriteListResponse",
+    14
+   ],
+   [
+    "davinci::effectplatform::heycan::VPanelInfoResponseModel",
+    14
+   ],
+   [
+    "davinci::effectplatform::loki::VPanelInfoResponseModel",
+    14
+   ]
+  ],
+  "exports_amostra": [
+   "??0?$ResourceFetchCallback@V?$vector@VEffect@loki@effectplatform@davinci@@V?$allocator@VEffect@loki@effectplatform@davinci@@@std@@@std@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@V?$vector@VEffect@loki@effectplatform@davinci@@V?$allocator@VEffect@loki@effectplatform@davinci@@@std@@@std@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@V?$vector@VEffect@loki@effectplatform@davinci@@V?$allocator@VEffect@loki@effectplatform@davinci@@@std@@@std@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VAddToFavoriteListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VAddToFavoriteListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VAddToFavoriteListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VAlgorithmModelRecord@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VAlgorithmModelRecord@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VAlgorithmModelRecord@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VAlgorithmModelRecordList@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VAlgorithmModelRecordList@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VAlgorithmModelRecordList@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VCategoryPageResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VCategoryPageResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VCategoryPageResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VCategoryResourceResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VCategoryResourceResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VCategoryResourceResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VCheckUpdateResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VCheckUpdateResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VCheckUpdateResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VEffect@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VEffect@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VEffect@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VEffect@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VEffect@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VEffect@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VEffectChannelResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VEffectChannelResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VEffectChannelResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VEffectListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VEffectListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VEffectListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VEffectListResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VEffectListResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VEffectListResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VFetchFavoriteListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VFetchFavoriteListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VFetchFavoriteListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VPanelInfoResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VPanelInfoResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VPanelInfoResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VPanelInfoResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VPanelInfoResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VPanelInfoResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VRecommendSearchWordsResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VRecommendSearchWordsResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VRecommendSearchWordsResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VRemoveFromFavoriteListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VRemoveFromFavoriteListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VRemoveFromFavoriteListResponse@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VResourceListBean@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VResourceListBean@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VResourceListBean@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VResourceListResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VResourceListResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VResourceListResponseModel@loki@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ",
+   "??0?$ResourceFetchCallback@VSearchEffectsResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@$$QEAV012@@Z",
+   "??0?$ResourceFetchCallback@VSearchEffectsResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@AEBV012@@Z",
+   "??0?$ResourceFetchCallback@VSearchEffectsResponseModel@heycan@effectplatform@davinci@@@effectplatform@davinci@@QEAA@XZ"
+  ]
+ },
+ {
+  "arquivo": "cccreator.dll",
+  "tamanho": 158564776,
+  "maquina": "0x8664",
+  "timestamp_pe": 1790677250,
+  "secoes": [
+   [
+    ".text",
+    69158400
+   ],
+   [
+    ".rdata",
+    15688704
+   ],
+   [
+    ".data",
+    1507328
+   ],
+   [
+    ".pdata",
+    2033664
+   ],
+   [
+    "__nv_mod",
+    8704
+   ],
+   [
+    "__nv_rel",
+    40243712
+   ],
+   [
+    ".nvFatBi",
+    2048
+   ],
+   [
+    ".nv_fatb",
+    29464064
+   ],
+   [
+    ".detourc",
+    8704
+   ],
+   [
+    ".detourd",
+    512
+   ],
+   [
+    "_RDATA",
+    1024
+   ],
+   [
+    ".rsrc",
+    1536
+   ],
+   [
+    ".reloc",
+    432128
+   ]
+  ],
+  "dlls_importadas": 62,
+  "funcoes_importadas": 1701,
+  "imports_por_dll": {
+   "MSVCP140.dll": {
+    "tipo": "normal",
+    "qtd": 253
+   },
+   "KERNEL32.dll": {
+    "tipo": "normal",
+    "qtd": 181
+   },
+   "audioeffect.dll": {
+    "tipo": "normal",
+    "qtd": 151
+   },
+   "avutil-59.dll": {
+    "tipo": "normal",
+    "qtd": 120
+   },
+   "jazz.dll": {
+    "tipo": "normal",
+    "qtd": 116
+   },
+   "sscronet.dll": {
+    "tipo": "normal",
+    "qtd": 105
+   },
+   "api-ms-win-crt-math-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 85
+   },
+   "avcodec-61.dll": {
+    "tipo": "normal",
+    "qtd": 71
+   },
+   "USER32.dll": {
+    "tipo": "normal",
+    "qtd": 69
+   },
+   "api-ms-win-crt-stdio-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 52
+   },
+   "libvpl.dll": {
+    "tipo": "normal",
+    "qtd": 48
+   },
+   "avformat-61.dll": {
+    "tipo": "normal",
+    "qtd": 46
+   },
+   "pthreadVC2.dll": {
+    "tipo": "normal",
+    "qtd": 30
+   },
+   "api-ms-win-crt-string-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 29
+   },
+   "api-ms-win-crt-runtime-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 27
+   },
+   "ByteVC1_dec.dll": {
+    "tipo": "normal",
+    "qtd": 26
+   },
+   "libraw.dll": {
+    "tipo": "normal",
+    "qtd": 26
+   },
+   "VCRUNTIME140.dll": {
+    "tipo": "normal",
+    "qtd": 26
+   },
+   "CONCRT140.dll": {
+    "tipo": "normal",
+    "qtd": 22
+   },
+   "libmp3lame-0.dll": {
+    "tipo": "normal",
+    "qtd": 20
+   },
+   "api-ms-win-crt-convert-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 18
+   },
+   "api-ms-win-crt-filesystem-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 17
+   },
+   "avfilter-10.dll": {
+    "tipo": "normal",
+    "qtd": 13
+   },
+   "api-ms-win-crt-time-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 11
+   },
+   "lens.dll": {
+    "tipo": "normal",
+    "qtd": 10
+   },
+   "SvtAv1Enc.dll": {
+    "tipo": "normal",
+    "qtd": 10
+   },
+   "GDI32.dll": {
+    "tipo": "normal",
+    "qtd": 10
+   },
+   "ole32.dll": {
+    "tipo": "normal",
+    "qtd": 10
+   },
+   "swresample-5.dll": {
+    "tipo": "normal",
+    "qtd": 9
+   },
+   "SETUPAPI.dll": {
+    "tipo": "normal",
+    "qtd": 8
+   },
+   "api-ms-win-crt-heap-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 8
+   },
+   "swscale-8.dll": {
+    "tipo": "normal",
+    "qtd": 5
+   },
+   "ttheif_dec.dll": {
+    "tipo": "normal",
+    "qtd": 5
+   },
+   "pdh.dll": {
+    "tipo": "normal",
+    "qtd": 5
+   },
+   "api-ms-win-crt-utility-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 5
+   },
+   "WS2_32.dll": {
+    "tipo": "normal",
+    "qtd": 4
+   },
+   "api-ms-win-crt-locale-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 4
+   },
+   "api-ms-win-crt-environment-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 4
+   },
+   "ffmpeg.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "lcms2.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "ADVAPI32.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "VERSION.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "mscms.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "dxva2.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "dxgi.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "d3d9.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "SHELL32.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "WTSAPI32.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "CFGMGR32.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "PROPSYS.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "D3DCOMPILER_47.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "d3d11.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "SHLWAPI.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "dwmapi.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "OPENGL32.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "OLEAUT32.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "MSVCP140_CODECVT_IDS.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "WindowsCodecs.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "RPCRT4.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "WINMM.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "VCRUNTIME140_1.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "api-ms-win-crt-multibyte-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   }
+  },
+  "exports": 7401,
+  "exports_top_escopos": [
+   [
+    "(C / global)",
+    2353
+   ],
+   [
+    "Bach",
+    1006
+   ],
+   [
+    "AmazingEngine",
+    405
+   ],
+   [
+    "vesdk::ccmodel",
+    250
+   ],
+   [
+    "AmazingEngine::VideoSegment",
+    170
+   ],
+   [
+    "AmazingEngine::Segment",
+    148
+   ],
+   [
+    "vesdk::ccmodel::CCTextStickerFilter",
+    122
+   ],
+   [
+    "AmazingEngine::SwingManager",
+    102
+   ],
+   [
+    "AmazingEngine::FeatureSegment",
+    88
+   ],
+   [
+    "AmazingEngine::TextSegment",
+    78
+   ],
+   [
+    "Bach::BachObject",
+    74
+   ],
+   [
+    "AmazingEngine::StickerCommonSegment",
+    70
+   ],
+   [
+    "vesdk::ccmodel::CCTransformFilter",
+    57
+   ],
+   [
+    "AmazingEngine::Matrix4x4f",
+    55
+   ],
+   [
+    "vesdk::ccmodel::CCStickerAnimationFilter",
+    53
+   ],
+   [
+    "Bach::BachAlgorithmSystemGE",
+    49
+   ],
+   [
+    "AmazingEngine::ScriptSegment",
+    48
+   ],
+   [
+    "vesdk::ccmodel::CCAmazingFilter",
+    43
+   ],
+   [
+    "LENS::FRAMEWORK",
+    42
+   ],
+   [
+    "vesdk::ccmodel::CCClip",
+    40
+   ],
+   [
+    "AmazingEngine::Rect",
+    32
+   ],
+   [
+    "bytevc1_10bit",
+    30
+   ],
+   [
+    "AmazingEngine::TransitionSegment",
+    30
+   ],
+   [
+    "vesdk::ccmodel::CCBefEffectFilter",
+    30
+   ],
+   [
+    "AmazingEngine::FileUtils",
+    29
+   ],
+   [
+    "AmazingEngine::Matrix3x3f",
+    29
+   ],
+   [
+    "AmazingEngine::DynamicBitset",
+    29
+   ],
+   [
+    "AmazingEngine::StickerBrushSegment",
+    28
+   ],
+   [
+    "AmazingEngine::RTTI",
+    28
+   ],
+   [
+    "AmazingEngine::Image",
+    28
+   ],
+   [
+    "vesdk::ccmodel::CCSwingPostProcessFilter",
+    27
+   ],
+   [
+    "AmazingEngine::SwingObjectTracker",
+    26
+   ],
+   [
+    "vesdk::ccmodel::CCFilter",
+    26
+   ],
+   [
+    "AmazingEngine::memory::MemoryManager",
+    25
+   ],
+   [
+    "vesdk::ccmodel::CCInfoStickerFilter",
+    25
+   ],
+   [
+    "vesdk::ccmodel::CCAiCutOutClipFilter",
+    25
+   ],
+   [
+    "AmazingEngine::NetworkRequest",
+    24
+   ],
+   [
+    "vesdk::ccmodel::CCVideoCropFilter",
+    24
+   ],
+   [
+    "AmazingEngine::SwingBaseBlender",
+    23
+   ],
+   [
+    "Bach::BachTextureInfo",
+    22
+   ]
+  ],
+  "exports_amostra": [
+   "??$isA@VStickerCommonSegment@AmazingEngine@@X@Segment@AmazingEngine@@QEBA_NXZ",
+   "??0?$enable_shared_from_this@VSegment@AmazingEngine@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VSegment@AmazingEngine@@@std@@IEAA@XZ",
+   "??0?$enable_shared_from_this@VSwingSurfaceTrackingController@AmazingEngine@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VSwingSurfaceTrackingController@AmazingEngine@@@std@@IEAA@XZ",
+   "??0AEAnchor@Bach@@QEAA@XZ",
+   "??0AELogSystem@AmazingEngine@@AEAA@XZ",
+   "??0AEPlaneAnchor@Bach@@QEAA@XZ",
+   "??0AEScoreInfo@Bach@@QEAA@XZ",
+   "??0AETrackable@Bach@@QEAA@XZ",
+   "??0ARScanBuffer@Bach@@QEAA@XZ",
+   "??0ARScanInfo@Bach@@QEAA@XZ",
+   "??0ActionDetectBuffer@Bach@@QEAA@XZ",
+   "??0ActionDetectInfo@Bach@@QEAA@XZ",
+   "??0ActionRecognitionBuffer@Bach@@QEAA@XZ",
+   "??0ActionRecognitionInfo@Bach@@QEAA@XZ",
+   "??0AfterEffectBuffer@Bach@@QEAA@XZ",
+   "??0AllowList@AmazingEngine@@QEAA@XZ",
+   "??0AllowListManager@AmazingEngine@@AEAA@XZ",
+   "??0ApolloFace3DBuffer@Bach@@QEAA@XZ",
+   "??0ApolloFace3DInfoClass@Bach@@QEAA@XZ",
+   "??0Archive@AmazingEngine@@IEAA@XZ",
+   "??0AudioAvatarBuffer@Bach@@QEAA@XZ",
+   "??0AudioAvatarInfo@Bach@@QEAA@XZ",
+   "??0AudioBackend@mammonengine@@QEAA@_K@Z",
+   "??0AutoReframeInfo@Bach@@QEAA@XZ",
+   "??0AvacapBuffer@Bach@@QEAA@XZ",
+   "??0AvacapInfo@Bach@@QEAA@XZ",
+   "??0Avatar3DBuffer@Bach@@QEAA@XZ",
+   "??0Avatar3DFusionBuffer@Bach@@QEAA@XZ",
+   "??0Avatar3DFusionInfo@Bach@@QEAA@XZ",
+   "??0Avatar3DInfo@Bach@@QEAA@XZ",
+   "??0AvatarDriveBuffer@Bach@@QEAA@XZ",
+   "??0AvatarDriveInfo@Bach@@QEAA@XZ",
+   "??0BEFContextSetter@BEF@@QEAA@PEAVBEFContext@1@@Z",
+   "??0BEFController@BEF@@QEAA@XZ",
+   "??0BEFEffectBaseController@BEF@@QEAA@XZ",
+   "??0BachAlgorithmConfigWithNodeName@Bach@@QEAA@$$QEAV01@@Z",
+   "??0BachAlgorithmConfigWithNodeName@Bach@@QEAA@AEBV01@@Z",
+   "??0BachAlgorithmConfigWithNodeName@Bach@@QEAA@XZ",
+   "??0BachAlgorithmInput@Bach@@IEAA@W4BachInputType@1@@Z",
+   "??0BachAlgorithmInput@Bach@@QEAA@AEBV01@@Z",
+   "??0BachAlgorithmModel@Bach@@QEAA@$$QEAU01@@Z",
+   "??0BachAlgorithmModel@Bach@@QEAA@AEBU01@@Z",
+   "??0BachAlgorithmModel@Bach@@QEAA@XZ",
+   "??0BachAlgorithmModelEvent@Bach@@QEAA@$$QEAU01@@Z",
+   "??0BachAlgorithmModelEvent@Bach@@QEAA@AEBU01@@Z",
+   "??0BachAlgorithmModelEvent@Bach@@QEAA@XZ",
+   "??0BachAlgorithmSystem@Bach@@QEAA@AEBV01@@Z",
+   "??0BachAlgorithmSystem@Bach@@QEAA@XZ",
+   "??0BachAlgorithmSystemGE@Bach@@QEAA@AEBV01@@Z",
+   "??0BachAlgorithmSystemGE@Bach@@QEAA@XZ",
+   "??0BachAlgorithmSystemWithDevice@Bach@@QEAA@$$QEAV01@@Z",
+   "??0BachAlgorithmSystemWithDevice@Bach@@QEAA@AEBV01@@Z",
+   "??0BachAlgorithmSystemWithDevice@Bach@@QEAA@XZ",
+   "??0BachBasicCallbackListener@Bach@@QEAA@AEBV01@@Z",
+   "??0BachBasicCallbackListener@Bach@@QEAA@W4BachCallbackType@1@@Z",
+   "??0BachBasicCallbackListener@Bach@@QEAA@W4BachCallbackType@1@W4AlgorithmType@1@@Z",
+   "??0BachBuffer@Bach@@QEAA@AEBW4AlgorithmResultType@1@@Z",
+   "??0BachBuffer@Bach@@QEAA@XZ"
+  ]
+ },
+ {
+  "arquivo": "videoeditor.dll",
+  "tamanho": 72501160,
+  "maquina": "0x8664",
+  "timestamp_pe": 1791434297,
+  "secoes": [
+   [
+    ".text",
+    50677248
+   ],
+   [
+    ".rdata",
+    16604672
+   ],
+   [
+    ".data",
+    3622400
+   ],
+   [
+    ".pdata",
+    1187840
+   ],
+   [
+    ".rsrc",
+    512
+   ],
+   [
+    ".reloc",
+    394752
+   ]
+  ],
+  "dlls_importadas": 28,
+  "funcoes_importadas": 854,
+  "imports_por_dll": {
+   "MSVCP140.dll": {
+    "tipo": "normal",
+    "qtd": 214
+   },
+   "cccreator.dll": {
+    "tipo": "normal",
+    "qtd": 196
+   },
+   "KERNEL32.dll": {
+    "tipo": "normal",
+    "qtd": 83
+   },
+   "clipflow_sdk.dll": {
+    "tipo": "normal",
+    "qtd": 77
+   },
+   "api-ms-win-crt-math-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 41
+   },
+   "api-ms-win-crt-stdio-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 38
+   },
+   "avutil-59.dll": {
+    "tipo": "normal",
+    "qtd": 28
+   },
+   "VCRUNTIME140.dll": {
+    "tipo": "normal",
+    "qtd": 24
+   },
+   "api-ms-win-crt-string-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 22
+   },
+   "avcodec-61.dll": {
+    "tipo": "normal",
+    "qtd": 21
+   },
+   "api-ms-win-crt-runtime-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 19
+   },
+   "avformat-61.dll": {
+    "tipo": "normal",
+    "qtd": 17
+   },
+   "USER32.dll": {
+    "tipo": "normal",
+    "qtd": 10
+   },
+   "api-ms-win-crt-time-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 9
+   },
+   "avfilter-10.dll": {
+    "tipo": "normal",
+    "qtd": 8
+   },
+   "api-ms-win-crt-filesystem-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 8
+   },
+   "api-ms-win-crt-heap-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 7
+   },
+   "api-ms-win-crt-convert-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 7
+   },
+   "swresample-5.dll": {
+    "tipo": "normal",
+    "qtd": 6
+   },
+   "swscale-8.dll": {
+    "tipo": "normal",
+    "qtd": 4
+   },
+   "ADVAPI32.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "api-ms-win-crt-locale-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "MSVCP140_CODECVT_IDS.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "SHLWAPI.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "api-ms-win-crt-utility-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "ole32.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "VCRUNTIME140_1.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "api-ms-win-crt-environment-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   }
+  },
+  "exports": 13722,
+  "exports_top_escopos": [
+   [
+    "lvve",
+    5720
+   ],
+   [
+    "(C / global)",
+    5536
+   ],
+   [
+    "lvve::RuntimeTransfer",
+    296
+   ],
+   [
+    "lvve::PersistentTransfer",
+    285
+   ],
+   [
+    "lvve::preset",
+    269
+   ],
+   [
+    "lvve::DraftEnumTransfer",
+    186
+   ],
+   [
+    "lyra::AIEdit",
+    123
+   ],
+   [
+    "lyra",
+    121
+   ],
+   [
+    "draft_store",
+    112
+   ],
+   [
+    "vesdk::ccmodel",
+    109
+   ],
+   [
+    "lvve::PlayerWin",
+    99
+   ],
+   [
+    "lyra::TextTemplateUtils",
+    66
+   ],
+   [
+    "lyra::CaptionKeyWordStyles",
+    44
+   ],
+   [
+    "lvve::AttachmentPCControl",
+    41
+   ],
+   [
+    "lvve::NewVEWrapper",
+    27
+   ],
+   [
+    "lvve::IAttachmentControl",
+    27
+   ],
+   [
+    "lvve::AttachmentPcArticleVideoControl",
+    24
+   ],
+   [
+    "lyra::CaptionCapital",
+    18
+   ],
+   [
+    "VideoClient",
+    18
+   ],
+   [
+    "lvve::AttachmentPCTimelineControl",
+    17
+   ],
+   [
+    "lvve::AttachmentAIClipperInfoControl",
+    16
+   ],
+   [
+    "lvve::AttachmentBusinessControl",
+    16
+   ],
+   [
+    "lyra::UAIGCEffectStartVETaskMixNodeReq",
+    14
+   ],
+   [
+    "lvve::AttachmentAIClipperTranscriptControl",
+    14
+   ],
+   [
+    "lvve::DraftQuery",
+    14
+   ],
+   [
+    "lvve::AttachmentManager",
+    13
+   ],
+   [
+    "lyra::clipflow::VAIGCEffectStartVETaskMixNode",
+    12
+   ],
+   [
+    "lvve::AttachmentTemplateControl",
+    12
+   ],
+   [
+    "lvve::IPlayer",
+    12
+   ],
+   [
+    "AdcubeClient",
+    12
+   ],
+   [
+    "lyra::wrapper::internal::VESDKModule::?1??veGlobalConfigInit",
+    11
+   ],
+   [
+    "lvve::VPlayerWin",
+    11
+   ],
+   [
+    "lvve::VESDKModule",
+    11
+   ],
+   [
+    "lvve::FrameRate",
+    10
+   ],
+   [
+    "lvve::CombinationPresetUtils",
+    10
+   ],
+   [
+    "lvve::AttachmentPluginDraftControl",
+    9
+   ],
+   [
+    "lvve::AttachmentCocreateControl",
+    8
+   ],
+   [
+    "lyra::clipflow::AIGCEffectStartVETaskMixNode",
+    8
+   ],
+   [
+    "draft_store::kv_json::KeyValueJsonManager",
+    8
+   ],
+   [
+    "TextClient",
+    8
+   ]
+  ],
+  "exports_amostra": [
+   "?$TSS0@?1??getInstance@AlgorithmAsyncUtils@lyra@@SAAEAV?$shared_ptr@VAlgorithmAsyncUtils@lyra@@@std@@XZ@4HA",
+   "?$TSS0@?1??getInstance@SegmentPreRenderCacheManager@lvve@@SAAEAV23@XZ@4HA",
+   "?$TSS0@?1??veGlobalConfigInit@VESDKModule@internal@wrapper@lyra@@SAXPEBUVEAdapterConfig@adapter@lvve@@@Z@4HA",
+   "?$TSS1@?1??veGlobalConfigInit@VESDKModule@internal@wrapper@lyra@@SAXPEBUVEAdapterConfig@adapter@lvve@@@Z@4HA",
+   "?$TSS2@?1??veGlobalConfigInit@VESDKModule@internal@wrapper@lyra@@SAXPEBUVEAdapterConfig@adapter@lvve@@@Z@4HA",
+   "?$TSS3@?1??veGlobalConfigInit@VESDKModule@internal@wrapper@lyra@@SAXPEBUVEAdapterConfig@adapter@lvve@@@Z@4HA",
+   "?$TSS4@?1??veGlobalConfigInit@VESDKModule@internal@wrapper@lyra@@SAXPEBUVEAdapterConfig@adapter@lvve@@@Z@4HA",
+   "?$TSS5@?1??veGlobalConfigInit@VESDKModule@internal@wrapper@lyra@@SAXPEBUVEAdapterConfig@adapter@lvve@@@Z@4HA",
+   "?$TSS6@?1??veGlobalConfigInit@VESDKModule@internal@wrapper@lyra@@SAXPEBUVEAdapterConfig@adapter@lvve@@@Z@4HA",
+   "?$TSS7@?1??veGlobalConfigInit@VESDKModule@internal@wrapper@lyra@@SAXPEBUVEAdapterConfig@adapter@lvve@@@Z@4HA",
+   "??0?$AsyncBlockNode@UAIGCEffectStartVETaskMixNodeReq@lyra@@UAIGCEffectStartVETaskMixNodeResp@2@@clipflow@@QEAA@AEBV01@@Z",
+   "??0?$AsyncBlockNode@UAIGCEffectStartVETaskMixNodeReq@lyra@@UAIGCEffectStartVETaskMixNodeResp@2@@clipflow@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+   "??0?$AsyncBlockNode@UAIGCEffectStartVETaskMixNodeReq@lyra@@UAIGCEffectStartVETaskMixNodeResp@2@@clipflow@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0AEBV?$function@$$A6AXV?$shared_ptr@UAIGCEffectStartVETaskMixNodeReq@lyra@@@std@@V?$shared_ptr@VIClipFlowNode@clipflow@@@2@@Z@3@AEBV?$function@$$A6AXV?$shared_ptr@VIClipFlowNode@clipflow@@@std@@@Z@3@AEBV?$function@$$A6A_NV?$shared_ptr@VIClipFlowNode@clipflow@@@std@@@Z@3@@Z",
+   "??0?$ClipFlowNode@UAIGCEffectStartVETaskMixNodeReq@lyra@@UAIGCEffectStartVETaskMixNodeResp@2@@clipflow@@QEAA@AEBV01@@Z",
+   "??0?$ClipFlowNode@UAIGCEffectStartVETaskMixNodeReq@lyra@@UAIGCEffectStartVETaskMixNodeResp@2@@clipflow@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+   "??0?$ClipFlowNode@UAIGCEffectStartVETaskMixNodeReq@lyra@@UAIGCEffectStartVETaskMixNodeResp@2@@clipflow@@QEAA@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0AEBV?$function@$$A6A?AV?$shared_ptr@UClipflowNodeResp@clipflow@@@std@@V?$shared_ptr@UAIGCEffectStartVETaskMixNodeReq@lyra@@@2@V?$shared_ptr@VIClipFlowNode@clipflow@@@2@@Z@3@AEBV?$function@$$A6AXV?$shared_ptr@VIClipFlowNode@clipflow@@@std@@@Z@3@AEBV?$function@$$A6A_NV?$shared_ptr@VIClipFlowNode@clipflow@@@std@@@Z@3@@Z",
+   "??0?$MixNode@VAIGCEffectStartVETaskMixNode@clipflow@lyra@@UAIGCEffectStartVETaskMixNodeParam@3@UAIGCEffectStartVETaskMixNodeReq@3@UAIGCEffectStartVETaskMixNodeResp@3@@clipflow@@QEAA@AEBV01@@Z",
+   "??0?$MixNode@VAIGCEffectStartVETaskMixNode@clipflow@lyra@@UAIGCEffectStartVETaskMixNodeParam@3@UAIGCEffectStartVETaskMixNodeReq@3@UAIGCEffectStartVETaskMixNodeResp@3@@clipflow@@QEAA@V?$shared_ptr@UAIGCEffectStartVETaskMixNodeParam@lyra@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@1@Z",
+   "??0?$NodeRegistable@VAIGCEffectStartVETaskMixNode@clipflow@lyra@@UAIGCEffectStartVETaskMixNodeParam@3@@clipflow@@QEAA@AEBV01@@Z",
+   "??0?$NodeRegistable@VAIGCEffectStartVETaskMixNode@clipflow@lyra@@UAIGCEffectStartVETaskMixNodeParam@3@@clipflow@@QEAA@V?$shared_ptr@UAIGCEffectStartVETaskMixNodeParam@lyra@@@std@@@Z",
+   "??0?$Selector@VPlayerWin@lvve@@UVeTimelineWrapper@wrapper@lyra@@X@wrapper@lyra@@QEAA@AEBU012@@Z",
+   "??0?$Selector@VPlayerWin@lvve@@UVeTimelineWrapper@wrapper@lyra@@X@wrapper@lyra@@QEAA@JJ@Z",
+   "??0?$Selector@VPlayerWin@lvve@@UVeTimelineWrapper@wrapper@lyra@@X@wrapper@lyra@@QEAA@XZ",
+   "??0?$enable_shared_from_this@USession@lyra@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@USession@lyra@@@std@@IEAA@XZ",
+   "??0?$enable_shared_from_this@UVeWrapper@wrapper@lyra@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@UVeWrapper@wrapper@lyra@@@std@@IEAA@XZ",
+   "??0?$enable_shared_from_this@VAttachmentAIClipperTranscriptControl@lvve@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VAttachmentAIClipperTranscriptControl@lvve@@@std@@IEAA@XZ",
+   "??0?$enable_shared_from_this@VAttachmentManager@lvve@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VAttachmentManager@lvve@@@std@@IEAA@XZ",
+   "??0?$enable_shared_from_this@VDraftIOFactoryBase@draft_store@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VDraftIOFactoryBase@draft_store@@@std@@IEAA@XZ",
+   "??0?$enable_shared_from_this@VDraftStore@draft_store@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VDraftStore@draft_store@@@std@@IEAA@XZ",
+   "??0?$enable_shared_from_this@VDraftStoreManager@draft_store@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VDraftStoreManager@draft_store@@@std@@IEAA@XZ",
+   "??0?$enable_shared_from_this@VPlayerWin@lvve@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VPlayerWin@lvve@@@std@@IEAA@XZ",
+   "??0?$enable_shared_from_this@VStoreWrapper@draft_store@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VStoreWrapper@draft_store@@@std@@IEAA@XZ",
+   "??0?$enable_shared_from_this@VVirtualStore@draft_store@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VVirtualStore@draft_store@@@std@@IEAA@XZ",
+   "??0AIGCEffectStartVETaskMixNode@clipflow@lyra@@QEAA@V?$shared_ptr@UAIGCEffectStartVETaskMixNodeParam@lyra@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@1@Z",
+   "??0AIGCEffectStartVETaskMixNode@clipflow@lyra@@QEAA@XZ",
+   "??0AbtestConfig@lyra@@AEAA@XZ",
+   "??0ActionParam@lvve@@QEAA@AEBV01@@Z",
+   "??0ActionParam@lvve@@QEAA@XZ",
+   "??0AdjustBase@preset@lvve@@QEAA@$$QEAU012@@Z",
+   "??0AdjustBase@preset@lvve@@QEAA@AEBU012@@Z",
+   "??0AdjustBase@preset@lvve@@QEAA@XZ",
+   "??0AdjustExtraInfo@preset@lvve@@QEAA@$$QEAU012@@Z",
+   "??0AdjustExtraInfo@preset@lvve@@QEAA@AEBU012@@Z",
+   "??0AdjustExtraInfo@preset@lvve@@QEAA@XZ",
+   "??0AdjustParam@preset@lvve@@QEAA@$$QEAU012@@Z",
+   "??0AdjustParam@preset@lvve@@QEAA@AEBU012@@Z",
+   "??0AdjustParam@preset@lvve@@QEAA@NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "??0AdjustParam@preset@lvve@@QEAA@XZ",
+   "??0AdjustPreset@lvve@@QEAA@$$QEAU01@@Z",
+   "??0AdjustPreset@lvve@@QEAA@AEBU01@@Z"
+  ]
+ },
+ {
+  "arquivo": "lens.dll",
+  "tamanho": 88502184,
+  "maquina": "0x8664",
+  "timestamp_pe": 1780568267,
+  "secoes": [
+   [
+    ".text",
+    9278976
+   ],
+   [
+    ".rdata",
+    7761408
+   ],
+   [
+    ".data",
+    1171456
+   ],
+   [
+    ".pdata",
+    228352
+   ],
+   [
+    ".nv_fatb",
+    29757440
+   ],
+   [
+    ".nvFatBi",
+    2048
+   ],
+   [
+    "__nv_mod",
+    8704
+   ],
+   [
+    "__nv_rel",
+    40242688
+   ],
+   [
+    "_RDATA",
+    1024
+   ],
+   [
+    ".rsrc",
+    512
+   ],
+   [
+    ".reloc",
+    35840
+   ]
+  ],
+  "dlls_importadas": 19,
+  "funcoes_importadas": 370,
+  "imports_por_dll": {
+   "MSVCP140.dll": {
+    "tipo": "normal",
+    "qtd": 104
+   },
+   "api-ms-win-crt-math-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 61
+   },
+   "KERNEL32.dll": {
+    "tipo": "normal",
+    "qtd": 53
+   },
+   "api-ms-win-crt-stdio-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 28
+   },
+   "fastcv.dll": {
+    "tipo": "normal",
+    "qtd": 21
+   },
+   "api-ms-win-crt-runtime-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 20
+   },
+   "CONCRT140.dll": {
+    "tipo": "normal",
+    "qtd": 19
+   },
+   "VCRUNTIME140.dll": {
+    "tipo": "normal",
+    "qtd": 18
+   },
+   "api-ms-win-crt-string-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 13
+   },
+   "api-ms-win-crt-convert-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 7
+   },
+   "api-ms-win-crt-filesystem-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 6
+   },
+   "api-ms-win-crt-heap-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 5
+   },
+   "D3DCOMPILER_47.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "ADVAPI32.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "api-ms-win-crt-utility-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "api-ms-win-crt-time-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "d3d11.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "VCRUNTIME140_1.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "api-ms-win-crt-environment-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   }
+  },
+  "exports": 379,
+  "exports_top_escopos": [
+   [
+    "(C / global)",
+    317
+   ],
+   [
+    "LENS::FRAMEWORK",
+    43
+   ],
+   [
+    "LENS::FRAMEWORK::LensUtils",
+    7
+   ],
+   [
+    "FASTCV::EXPORTS",
+    4
+   ],
+   [
+    "FASTCV::EXPORTS::Range",
+    3
+   ],
+   [
+    "LENS::FRAMEWORK::LensAlgorithmFactory",
+    2
+   ],
+   [
+    "LENS::FRAMEWORK::LensEngineFactory",
+    2
+   ],
+   [
+    "LENS::FRAMEWORK::LensAlgorithmUtils",
+    1
+   ]
+  ],
+  "exports_amostra": [
+   "??0ICvAcceleratedOperatorInterface@FRAMEWORK@LENS@@QEAA@AEBV012@@Z",
+   "??0ICvAcceleratedOperatorInterface@FRAMEWORK@LENS@@QEAA@XZ",
+   "??0ILensAlgorithmInterface@FRAMEWORK@LENS@@QEAA@AEBV012@@Z",
+   "??0ILensAlgorithmInterface@FRAMEWORK@LENS@@QEAA@XZ",
+   "??0ILensAsyncOutputListener@FRAMEWORK@LENS@@QEAA@AEBV012@@Z",
+   "??0ILensAsyncOutputListener@FRAMEWORK@LENS@@QEAA@XZ",
+   "??0ILensEngineInterface@FRAMEWORK@LENS@@QEAA@AEBV012@@Z",
+   "??0ILensEngineInterface@FRAMEWORK@LENS@@QEAA@XZ",
+   "??0ILensFlowGraphInterface@FRAMEWORK@LENS@@QEAA@AEBV012@@Z",
+   "??0ILensFlowGraphInterface@FRAMEWORK@LENS@@QEAA@XZ",
+   "??0IOneKeyGraphInterface@FRAMEWORK@LENS@@QEAA@AEBV012@@Z",
+   "??0IOneKeyGraphInterface@FRAMEWORK@LENS@@QEAA@XZ",
+   "??0IVendorAlgorithmInterface@FRAMEWORK@LENS@@QEAA@AEBV012@@Z",
+   "??0IVendorAlgorithmInterface@FRAMEWORK@LENS@@QEAA@XZ",
+   "??0Range@EXPORTS@FASTCV@@QEAA@HH@Z",
+   "??0Range@EXPORTS@FASTCV@@QEAA@XZ",
+   "??1ICvAcceleratedOperatorInterface@FRAMEWORK@LENS@@UEAA@XZ",
+   "??1ILensAlgorithmInterface@FRAMEWORK@LENS@@UEAA@XZ",
+   "??1ILensAsyncOutputListener@FRAMEWORK@LENS@@UEAA@XZ",
+   "??1ILensEngineInterface@FRAMEWORK@LENS@@UEAA@XZ",
+   "??1ILensFlowGraphInterface@FRAMEWORK@LENS@@UEAA@XZ",
+   "??1IOneKeyGraphInterface@FRAMEWORK@LENS@@UEAA@XZ",
+   "??1IVendorAlgorithmInterface@FRAMEWORK@LENS@@UEAA@XZ",
+   "??4ICvAcceleratedOperatorInterface@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4ILensAlgorithmInterface@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4ILensAsyncOutputListener@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4ILensEngineInterface@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4ILensFlowGraphInterface@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4IOneKeyGraphInterface@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4IVendorAlgorithmInterface@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4LensAlgorithmFactory@FRAMEWORK@LENS@@QEAAAEAV012@$$QEAV012@@Z",
+   "??4LensAlgorithmFactory@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4LensAlgorithmUtils@FRAMEWORK@LENS@@QEAAAEAV012@$$QEAV012@@Z",
+   "??4LensAlgorithmUtils@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4LensEngineFactory@FRAMEWORK@LENS@@QEAAAEAV012@$$QEAV012@@Z",
+   "??4LensEngineFactory@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4LensUtils@FRAMEWORK@LENS@@QEAAAEAV012@$$QEAV012@@Z",
+   "??4LensUtils@FRAMEWORK@LENS@@QEAAAEAV012@AEBV012@@Z",
+   "??4Range@EXPORTS@FASTCV@@QEAAAEAV012@$$QEAV012@@Z",
+   "??4Range@EXPORTS@FASTCV@@QEAAAEAV012@AEBV012@@Z",
+   "??_7ICvAcceleratedOperatorInterface@FRAMEWORK@LENS@@6B@",
+   "??_7ILensAlgorithmInterface@FRAMEWORK@LENS@@6B@",
+   "??_7ILensAsyncOutputListener@FRAMEWORK@LENS@@6B@",
+   "??_7ILensEngineInterface@FRAMEWORK@LENS@@6B@",
+   "??_7ILensFlowGraphInterface@FRAMEWORK@LENS@@6B@",
+   "??_7IOneKeyGraphInterface@FRAMEWORK@LENS@@6B@",
+   "??_7IVendorAlgorithmInterface@FRAMEWORK@LENS@@6B@",
+   "?CreateLensAlgorithm@LensAlgorithmFactory@FRAMEWORK@LENS@@SAPEAVILensAlgorithmInterface@23@XZ",
+   "?CreateLensEngine@LensEngineFactory@FRAMEWORK@LENS@@SAPEAVILensEngineInterface@23@XZ",
+   "?GetInfoFromJson@LensAlgorithmUtils@FRAMEWORK@LENS@@SA?AW4LensCode@@PEBD0PEAULensAlgorithmJsonInfo@23@@Z",
+   "?LoadEGL@LensUtils@FRAMEWORK@LENS@@SAXP6AP6AXXZPEBD@Z@Z",
+   "?LoadEGLLibrary@LensUtils@FRAMEWORK@LENS@@SAXPEBD@Z",
+   "?LoadGLES@LensUtils@FRAMEWORK@LENS@@SAXP6AP6AXXZPEBD@Z@Z",
+   "?LoadGLESLibrary@LensUtils@FRAMEWORK@LENS@@SAXPEBD@Z",
+   "?ReleaseLensAlgorithm@LensAlgorithmFactory@FRAMEWORK@LENS@@SAXPEAVILensAlgorithmInterface@23@@Z",
+   "?ReleaseLensEngine@LensEngineFactory@FRAMEWORK@LENS@@SAXPEAVILensEngineInterface@23@@Z",
+   "?SetLogCallback@LensUtils@FRAMEWORK@LENS@@SAXP6AXHPEBD0@Z@Z",
+   "?UnLoadEGLLibrary@LensUtils@FRAMEWORK@LENS@@SAXXZ",
+   "?UnLoadGLESLibrary@LensUtils@FRAMEWORK@LENS@@SAXXZ",
+   "?all@Range@EXPORTS@FASTCV@@SA?AV123@XZ"
+  ]
+ }
+]

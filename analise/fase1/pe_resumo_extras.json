@@ -1,0 +1,532 @@
+[
+ {
+  "arquivo": "deepagents_capi.dll",
+  "tamanho": 42067992,
+  "maquina": "0x8664",
+  "timestamp_pe": 0,
+  "secoes": [
+   [
+    ".text",
+    18924032
+   ],
+   [
+    ".data",
+    2222080
+   ],
+   [
+    ".rdata",
+    19950592
+   ],
+   [
+    "/4",
+    512
+   ],
+   [
+    ".pdata",
+    476160
+   ],
+   [
+    ".xdata",
+    35840
+   ],
+   [
+    ".bss",
+    0
+   ],
+   [
+    ".edata",
+    3072
+   ],
+   [
+    ".idata",
+    6656
+   ],
+   [
+    ".CRT",
+    512
+   ],
+   [
+    ".tls",
+    512
+   ],
+   [
+    ".reloc",
+    433664
+   ],
+   [
+    ".debug",
+    108
+   ]
+  ],
+  "dlls_importadas": 9,
+  "funcoes_importadas": 159,
+  "imports_por_dll": {
+   "KERNEL32.dll": {
+    "tipo": "normal",
+    "qtd": 113
+   },
+   "api-ms-win-crt-runtime-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 17
+   },
+   "api-ms-win-crt-string-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 7
+   },
+   "api-ms-win-crt-heap-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 5
+   },
+   "api-ms-win-crt-private-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 5
+   },
+   "api-ms-win-crt-time-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 5
+   },
+   "api-ms-win-crt-stdio-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 4
+   },
+   "api-ms-win-crt-environment-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "api-ms-win-crt-utility-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   }
+  },
+  "exports": 77,
+  "exports_top_escopos": [
+   [
+    "(C / global)",
+    77
+   ]
+  ],
+  "exports_amostra": [
+   "_cgo_dummy_export",
+   "authorizerTrampoline",
+   "callbackTrampoline",
+   "commitHookTrampoline",
+   "compareTrampoline",
+   "da_agent_create",
+   "da_agent_create_with_callbacks",
+   "da_agent_delete_conversation",
+   "da_agent_destroy",
+   "da_agent_execute_subagent",
+   "da_agent_get_conversation",
+   "da_agent_get_conversation_execution_graph",
+   "da_agent_get_conversation_history_page",
+   "da_agent_host_stream_async",
+   "da_agent_list_conversations",
+   "da_agent_next",
+   "da_agent_patch_conversation",
+   "da_agent_retrieve_deeplinks",
+   "da_agent_run",
+   "da_agent_run_async",
+   "da_agent_start",
+   "da_agent_stream_next",
+   "da_agent_stream_run",
+   "da_agent_stream_start",
+   "da_buffer_alloc",
+   "da_buffer_free",
+   "da_execution_gate_reply_impl",
+   "da_fornax_trace_send_reply_impl",
+   "da_get_abi_version",
+   "da_get_api_table",
+   "da_get_version",
+   "da_last_error_message",
+   "da_session_apply_parent_trace_header_json_internal",
+   "da_session_cancel",
+   "da_session_create",
+   "da_session_destroy",
+   "da_session_get_fornax_runtime_view",
+   "da_session_get_model_context_view",
+   "da_session_get_run_start_span_header_json",
+   "da_session_get_transcript_view",
+   "da_session_list_raw_transcript_events",
+   "da_session_list_raw_transcript_rounds",
+   "da_session_rewrite_history",
+   "da_session_set_eval_case_id",
+   "da_session_set_event_callbacks",
+   "da_session_set_next_fornax_turn_trace_context",
+   "da_session_set_prompt_injections",
+   "da_session_set_run_start_pre_content",
+   "da_session_set_thinking_override",
+   "da_set_crash_callbacks",
+   "da_set_log_callback",
+   "da_set_log_min_level",
+   "da_stream_close",
+   "da_stream_read",
+   "da_string_view_alloc_copy",
+   "da_task_cancel",
+   "da_task_destroy",
+   "da_task_resume",
+   "da_tool_call_emit_event",
+   "da_tool_call_get_parent_round_id"
+  ]
+ },
+ {
+  "arquivo": "audioeffect.dll",
+  "tamanho": 14009768,
+  "maquina": "0x8664",
+  "timestamp_pe": 1773390584,
+  "secoes": [
+   [
+    ".text",
+    10885632
+   ],
+   [
+    ".rdata",
+    2470912
+   ],
+   [
+    ".data",
+    179200
+   ],
+   [
+    ".pdata",
+    420352
+   ],
+   [
+    ".msvcjmc",
+    1536
+   ],
+   [
+    "_RDATA",
+    512
+   ],
+   [
+    ".rsrc",
+    512
+   ],
+   [
+    ".reloc",
+    37376
+   ]
+  ],
+  "dlls_importadas": 23,
+  "funcoes_importadas": 549,
+  "imports_por_dll": {
+   "MSVCP140.dll": {
+    "tipo": "normal",
+    "qtd": 177
+   },
+   "sscronet.dll": {
+    "tipo": "normal",
+    "qtd": 74
+   },
+   "api-ms-win-crt-math-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 62
+   },
+   "KERNEL32.dll": {
+    "tipo": "normal",
+    "qtd": 59
+   },
+   "api-ms-win-crt-stdio-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 26
+   },
+   "VCRUNTIME140.dll": {
+    "tipo": "normal",
+    "qtd": 23
+   },
+   "api-ms-win-crt-runtime-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 19
+   },
+   "avformat-61.dll": {
+    "tipo": "normal",
+    "qtd": 17
+   },
+   "avcodec-61.dll": {
+    "tipo": "normal",
+    "qtd": 15
+   },
+   "avutil-59.dll": {
+    "tipo": "normal",
+    "qtd": 13
+   },
+   "api-ms-win-crt-string-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 13
+   },
+   "api-ms-win-crt-convert-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 9
+   },
+   "api-ms-win-crt-time-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 8
+   },
+   "api-ms-win-crt-heap-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 7
+   },
+   "api-ms-win-crt-filesystem-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 7
+   },
+   "swresample-5.dll": {
+    "tipo": "normal",
+    "qtd": 6
+   },
+   "ole32.dll": {
+    "tipo": "normal",
+    "qtd": 4
+   },
+   "ADVAPI32.dll": {
+    "tipo": "normal",
+    "qtd": 3
+   },
+   "AVRT.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "api-ms-win-crt-utility-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 2
+   },
+   "SHELL32.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "VCRUNTIME140_1.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   },
+   "api-ms-win-crt-locale-l1-1-0.dll": {
+    "tipo": "normal",
+    "qtd": 1
+   }
+  },
+  "exports": 2102,
+  "exports_top_escopos": [
+   [
+    "mammon",
+    285
+   ],
+   [
+    "(C / global)",
+    204
+   ],
+   [
+    "mammonengine",
+    184
+   ],
+   [
+    "AudioCleaner",
+    78
+   ],
+   [
+    "sami",
+    78
+   ],
+   [
+    "M::?$AudioFile",
+    42
+   ],
+   [
+    "N::?$AudioFile",
+    42
+   ],
+   [
+    "mammonengine::GraphManager",
+    34
+   ],
+   [
+    "mammon::PitchTempoAdjuster",
+    30
+   ],
+   [
+    "mammonengine::MDSPNode",
+    27
+   ],
+   [
+    "mammonengine::FileSourceNode",
+    27
+   ],
+   [
+    "mammonengine::Node",
+    26
+   ],
+   [
+    "mammon::Effect",
+    26
+   ],
+   [
+    "mammon::CascadeEffect",
+    24
+   ],
+   [
+    "mammon::Reverb",
+    24
+   ],
+   [
+    "mammonengine::AudioBackend",
+    23
+   ],
+   [
+    "mammonengine::ADSRNode",
+    22
+   ],
+   [
+    "mammon::Resampler",
+    20
+   ],
+   [
+    "mammonengine::IOManager",
+    20
+   ],
+   [
+    "mammonengine::AudioGraph",
+    18
+   ],
+   [
+    "mammon::NNVAD",
+    18
+   ],
+   [
+    "mammon::VoiceActivityDetector",
+    18
+   ],
+   [
+    "mammonengine::MDSPSubNode",
+    18
+   ],
+   [
+    "mammonengine::DummyBackend",
+    18
+   ],
+   [
+    "mammon::M",
+    17
+   ],
+   [
+    "mammon::CLimiter",
+    16
+   ],
+   [
+    "mammon::CLimiterV2",
+    16
+   ],
+   [
+    "mammonengine::FileBackend",
+    16
+   ],
+   [
+    "mammon::NonRealtimeEffect",
+    16
+   ],
+   [
+    "mammon::AudioBuffer",
+    15
+   ],
+   [
+    "mammon::SpecDisplayX",
+    15
+   ],
+   [
+    "mammon::F0DetectorX",
+    15
+   ],
+   [
+    "mammon::OnsetDetectorX",
+    15
+   ],
+   [
+    "mammonengine::AudioStream",
+    15
+   ],
+   [
+    "mammonengine::OscillatorNode",
+    15
+   ],
+   [
+    "mammon::AEDExtractor",
+    14
+   ],
+   [
+    "mammon::KWSExtractor",
+    14
+   ],
+   [
+    "mammonengine::NodeOutput",
+    14
+   ],
+   [
+    "mammon::RingBufferHelper",
+    14
+   ],
+   [
+    "mammonengine::BiquadFilterNode",
+    13
+   ]
+  ],
+  "exports_amostra": [
+   "??$getPoints@M@WaveformVisualizer@mammon@@QEAA?AV?$tuple@V?$unique_ptr@$$BY0A@MU?$default_delete@$$BY0A@M@std@@@std@@W4WaveformVisualizerError@mammon@@@std@@PEBQEBM_K1@Z",
+   "??$getPointsInterleaved@M@WaveformVisualizer@mammon@@QEAA?AV?$tuple@V?$unique_ptr@$$BY0A@MU?$default_delete@$$BY0A@M@std@@@std@@W4WaveformVisualizerError@mammon@@@std@@PEBM_K1@Z",
+   "??0?$AudioFile@M@@QEAA@AEBV0@@Z",
+   "??0?$AudioFile@M@@QEAA@XZ",
+   "??0?$AudioFile@N@@QEAA@AEBV0@@Z",
+   "??0?$AudioFile@N@@QEAA@XZ",
+   "??0?$CycleFifoBufferX@M@mammon@@QEAA@AEAV01@@Z",
+   "??0?$CycleFifoBufferX@M@mammon@@QEAA@XZ",
+   "??0?$CycleFifoBufferX@M@mammon@@QEAA@_K@Z",
+   "??0?$DynamicDelayAdjustX@M@mammon@@QEAA@AEAV01@@Z",
+   "??0?$DynamicDelayAdjustX@M@mammon@@QEAA@XZ",
+   "??0?$RingBufferWrapper@VAecMicSelectionImpl@AecMicSelection@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VAecMicSelectionImpl@AecMicSelection@mammon@@@mammon@@QEAA@AEAVAecMicSelectionImpl@AecMicSelection@1@@Z",
+   "??0?$RingBufferWrapper@VAecMicSelectionImpl@AecMicSelection@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@AEC@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@AEC@mammon@@@mammon@@QEAA@AEAVImpl@AEC@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@AEC@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@AGC@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@AGC@mammon@@@mammon@@QEAA@AEAVImpl@AGC@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@AGC@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@AudioPreprocess@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@AudioPreprocess@mammon@@@mammon@@QEAA@AEAVImpl@AudioPreprocess@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@AudioPreprocess@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@Ducker@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@Ducker@mammon@@@mammon@@QEAA@AEAVImpl@Ducker@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@Ducker@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@KaraokeEffect@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@KaraokeEffect@mammon@@@mammon@@QEAA@AEAVImpl@KaraokeEffect@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@KaraokeEffect@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@LoudNorm2@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@LoudNorm2@mammon@@@mammon@@QEAA@AEAVImpl@LoudNorm2@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@LoudNorm2@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@LoudNorm3@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@LoudNorm3@mammon@@@mammon@@QEAA@AEAVImpl@LoudNorm3@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@LoudNorm3@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@NoiseSuppression@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@NoiseSuppression@mammon@@@mammon@@QEAA@AEAVImpl@NoiseSuppression@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@NoiseSuppression@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@RNNoise16k@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@RNNoise16k@mammon@@@mammon@@QEAA@AEAVImpl@RNNoise16k@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@RNNoise16k@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@RNNoise48k@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@RNNoise48k@mammon@@@mammon@@QEAA@AEAVImpl@RNNoise48k@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@RNNoise48k@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@RNNoise@mammon@@@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferWrapper@VImpl@RNNoise@mammon@@@mammon@@QEAA@AEAVImpl@RNNoise@1@@Z",
+   "??0?$RingBufferWrapper@VImpl@RNNoise@mammon@@@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferX@M@mammon@@QEAA@$$QEAV01@@Z",
+   "??0?$RingBufferX@M@mammon@@QEAA@AEBV01@@Z",
+   "??0?$RingBufferX@M@mammon@@QEAA@I@Z",
+   "??0?$enable_shared_from_this@VNode@mammonengine@@@std@@IEAA@AEBV01@@Z",
+   "??0?$enable_shared_from_this@VNode@mammonengine@@@std@@IEAA@XZ",
+   "??0ADSRNode@mammonengine@@QEAA@XZ",
+   "??0AEDExtractor@mammon@@QEAA@AEBV01@@Z",
+   "??0AEDExtractor@mammon@@QEAA@HH@Z",
+   "??0AmbisonicBinauralDecoder@mammonengine@@QEAA@$$QEAV01@@Z",
+   "??0AmbisonicBinauralDecoder@mammonengine@@QEAA@AEAV?$vector@V?$vector@MV?$allocator@M@std@@@std@@V?$allocator@V?$vector@MV?$allocator@M@std@@@std@@@2@@std@@_K@Z",
+   "??0AmbisonicBinauralDecoder@mammonengine@@QEAA@AEBV01@@Z",
+   "??0AmbisonicEncoderNode@mammonengine@@QEAA@H@Z",
+   "??0AudioBackend@mammonengine@@QEAA@_K@Z"
+  ]
+ }
+]

@@ -379,7 +379,17 @@ Janela Principal (Qt6)
 | Bun runtime | bun.exe (107MB) | JavaScript runtime |
 | ANGLE (OpenGL→D3D) | VEAngle/ | Compatibilidade OpenGL |
 | SVT-AV1 | SvtAv1Enc.dll | Encoder AV1 |
-| Lyra codec | lyra_cli_client.dll | Codec áudio IA Google |
+| "Lyra" (interno ByteDance) | lyra_cli_client.dll | ⚠️ Corrigido na Fase 1: não é o codec Lyra do Google — `lyra::AIEdit`, `lyra::TextTemplateUtils`, `Editor/lyra_shell` indicam um framework interno de edição/IA (ver seção 12) |
+| ByteDance Effect SDK (BEF) | exports `bef_effect_*` no cccreator.dll | Efeitos, retrato, swing/animação |
+| AmazingEngine / Bach | exports C++ do cccreator.dll | Motor de cena/efeitos (Lua) e sistema de algoritmos |
+| CloudWeGo Eino (Go) | deepagents_capi.dll | Framework de agentes LLM |
+| Mammon / SAMI | audioeffect.dll | Motor de áudio (denoise, beat tracking, stems, loudnorm) |
+| Crypto++ | RTTI no videoeditor.dll | Criptografia no núcleo do draft |
+| LuaJIT | videoeditor.dll | Scripts do editor/efeitos |
+| VMProtect | seções `.vmp0-2` do VECreator.dll | Proteção/ofuscação do app principal |
+| Microsoft Detours | seções `.detourc/.detourd` | Hooking de funções |
+| CUDA | seções `.nv_fatb` (cccreator, lens) | Kernels de GPU NVIDIA |
+| Intel oneVPL | libvpl.dll | Decodificação/codificação Quick Sync |
 | C2PA SDK | tt_c2pa_sdk.dll | Autenticidade de conteúdo |
 | DirectX Shader Compiler | dxcompiler.dll | Compilação HLSL |
 | Breakpad | minidump_stackwalk | Crash reporting |
@@ -388,4 +398,33 @@ Janela Principal (Qt6)
 
 ---
 
-*Gerado em: 2026-10-15 | Fonte: análise estática de strings, recursos e manifests do CapCut v9.6.0.4097*
+## 12. Fase 1 — Imports/exports, strings e recursos (concluída)
+
+Relatório completo, tabelas e método: [analise/fase1/RELATORIO.md](analise/fase1/RELATORIO.md). Scripts reproduzíveis em `analise/scripts/`.
+
+### 12.1 Papel real de cada binário
+
+| Binário | Papel (pelas tabelas PE) |
+|---|---|
+| `CapCut.exe` (launcher) | Apenas Win32 + base do Chromium (`base::*`, `switches::*`). Delega todo o resto. |
+| `VECreator.dll` | **App Qt principal** (Qt6Core: 1.901 funções importadas). Protegido com VMProtect e usa Detours. Único export C: `entryPoint`. |
+| `cccreator.dll` | Motor de efeitos/render: FFmpeg, BEF Effect SDK (`bef_effect_*` ×559), `AmazingEngine`, `Bach`, CUDA, D3D11/OpenGL, QSV, SVT-AV1. |
+| `videoeditor.dll` | Núcleo do editor e do draft (`lvve::*`, `draft_store`, `lyra::*`). 5.536 exports só por ordinal. |
+| `lens.dll` | Biblioteca de tensores/visão `tl_*` com CUDA e FastCV. |
+| `deepagents_capi.dll` | Agente LLM em Go (CloudWeGo Eino) com API C `da_*`; provedores OpenAI, Anthropic, Gemini/Vertex, Volcengine Ark, Coze, OpenRouter. |
+| `audioeffect.dll` | Motor de áudio Mammon/SAMI (rnnoise, beat tracking DBN, separação de stems, loudnorm, VAD/ASR). |
+| `smart_cut.ofx` | Plugin OpenFX de **smart crop / auto-reframe** (não de corte por silêncio). |
+
+### 12.2 Achados principais
+
+- **Draft** = vários JSONs: `draft_content.json`, `draft_info.json` e uma família `attachment_*.json` (`attachment_pc_timeline`, `attachment_editing`, `attachment_ai_clipper`, `attachment_watermark_info`...). Crypto++ presente no `videoeditor.dll`.
+- **Filtros de efeito** (`vesdk::ccmodel::CC*Filter`): TextSticker, Transform, StickerAnimation, Amazing, AiCutOutClip, MotionBlur, VideoCrop, LensVFI, ObjectTracker, DigitalMan, AudioSami, VideoCanvas... — mapa de tipos de efeito para a Fase 2.3.
+- **Front web local:** o video-studio é servido por um host local (`127.0.0.1:5174/5175`) e conversa com o nativo por `window.cefQuery({callType, data})` e `videoStudioNativeBridge.postMessage({version:1,type,payload})`.
+- **Integridade do pacote web:** `web-manifest.json` traz SHA-256 de 140 arquivos (todos conferem) e o contrato `productHostApi` v1.
+- **Agente com skills e MCP:** rotas `/api/common-agent/v1/{skills, user-skills, mcp-connections, agent-profiles}`.
+- **Watermarks:** `infoSticker.lua` (runtime Lua do Effect SDK, 30 fps, ease-in/out de escala de 0,2 s, escala = largura/720) + `ani_info.json` no formato TexturePacker (90 frames de 200×60, atlas 1024×1024).
+- **Segurança:** uma chave de API (`ak=`) embutida em URL no `VECreator.dll` — mascarada em todos os arquivos gerados.
+
+---
+
+*Gerado em: 2026-10-15 | Fonte: análise estática de strings, recursos e manifests do CapCut v9.6.0.4097 | Seção 12: tabelas PE (pefile) e strings categorizadas*

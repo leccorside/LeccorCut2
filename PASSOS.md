@@ -17,11 +17,13 @@
 - [x] Identificar tecnologias: Qt6, CEF (Chromium), FFmpeg, Python 3.11, Bun, Lynx UI
 - [x] Ler `ProductInfo.xml` (CID: `capcutpc_0`, versão, release type)
 - [x] Identificar modelos de IA empacotados (pasta `Resources/models/`)
-- [ ] Extrair tabela completa de imports/exports do `CapCut.exe` launcher via Ghidra
-- [ ] Extrair tabela de imports do `VECreator.dll` via Ghidra
-- [ ] Extrair tabela de imports do `cccreator.dll` via Ghidra
-- [ ] Extrair tabela de imports do `videoeditor.dll` via Ghidra
-- [ ] Extrair tabela de imports do `lens.dll` via Ghidra
+- [x] Extrair tabela completa de imports/exports do `CapCut.exe` launcher (via `pefile` — ver nota no relatório)
+- [x] Extrair tabela de imports do `VECreator.dll` (app Qt principal; VMProtect + Detours)
+- [x] Extrair tabela de imports do `cccreator.dll` (FFmpeg, BEF Effect SDK, CUDA)
+- [x] Extrair tabela de imports do `videoeditor.dll` (5.536 exports só por ordinal)
+- [x] Extrair tabela de imports do `lens.dll` (tensor lib `tl_*` com CUDA)
+
+> Resultados da Fase 1: [analise/fase1/RELATORIO.md](analise/fase1/RELATORIO.md)
 
 ### 1.2 Análise de Strings e Recursos
 - [x] Extrair strings ASCII do `CapCut.exe` launcher (caminhos, DLLs, erros de crypto)
@@ -30,12 +32,12 @@
 - [x] Identificar endpoints de agente de IA (`/api/agent-runtime/v1`)
 - [x] Extrair referências a modelos de IA no bundle JS (SeedDance, MiniMax, GPTImage2, etc.)
 - [x] Mapear tipos de watermark (brand, AI, CapCut, CapCutAI)
-- [ ] Extrair strings do `VECreator.dll` (pipeline de renderização)
-- [ ] Extrair strings do `videoeditor.dll` (editor core)
-- [ ] Extrair strings do `audioeffect.dll` (processamento de áudio)
-- [ ] Extrair strings do `deepagents_capi.dll` (bridge IA)
-- [ ] Analisar arquivos `.lua` dos watermarks
-- [ ] Analisar arquivos `ani_info.json` dos watermarks (formato de animação)
+- [x] Extrair strings do `VECreator.dll` (pipeline de renderização)
+- [x] Extrair strings do `videoeditor.dll` (editor core)
+- [x] Extrair strings do `audioeffect.dll` (processamento de áudio — motor Mammon/SAMI)
+- [x] Extrair strings do `deepagents_capi.dll` (bridge IA — Go + CloudWeGo Eino)
+- [x] Analisar arquivos `.lua` dos watermarks
+- [x] Analisar arquivos `ani_info.json` dos watermarks (formato de animação — atlas TexturePacker)
 
 ### 1.3 Análise de Configuração e Recursos
 - [x] Identificar Lynx pages de assinatura (`image_lynx_videocutpc_*`)
@@ -44,10 +46,10 @@
 - [x] Identificar uso de `bun.exe` (runtime JS embarcado, 107MB)
 - [x] Identificar uso de `python311.dll` (processamento Python)
 - [x] Identificar uso de `libcef.dll` (Chromium Embedded Framework para UI)
-- [ ] Analisar `web-manifest.json` completo (mapeamento de assets e checksums)
-- [ ] Analisar bundle JS `commonagent/assets/App-*.js` (lógica da UI principal)
-- [ ] Analisar `server.json` na raiz do repositório rea
-- [ ] Analisar `smart_cut.ofx.bundle` (plugin de corte inteligente)
+- [x] Analisar `web-manifest.json` completo (mapeamento de assets e checksums — 140 SHA-256 conferidos)
+- [x] Analisar bundle JS do commonagent (`renderApp-CIJPeLBB.js`; não existe `App-*.js` nessa pasta)
+- [x] Analisar `server.json` na raiz do repositório rea (manifesto MCP do próprio REA)
+- [x] Analisar `smart_cut.ofx.bundle` (plugin OpenFX de smart crop / auto-reframe, não de corte)
 
 ---
 
@@ -192,7 +194,7 @@
 
 | Fase | Progresso | Prioridade |
 |------|-----------|------------|
-| Fase 1 — Reconhecimento Estático | 🟡 Em andamento (60%) | 🔴 Alta |
+| Fase 1 — Reconhecimento Estático | 🟢 Concluída (100%) | 🔴 Alta |
 | Fase 2 — Arquitetura e Componentes | 🔴 Iniciado (25%) | 🔴 Alta |
 | Fase 3 — Rede e APIs | 🔴 Iniciado (20%) | 🟡 Média |
 | Fase 4 — Análise Dinâmica | ⚪ Não iniciado | 🟡 Média |
@@ -200,4 +202,4 @@
 
 ---
 
-*Última atualização: 2026-10-15 | Ferramenta: REA v6.4.0 + Ghidra 12.1.4*
+*Última atualização: 2026-10-15 — Fase 1 concluída | Ferramentas: REA v6.4.0 + Ghidra 12.1.4 + pefile 2024.8.26*

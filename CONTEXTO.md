@@ -68,7 +68,23 @@ via engenharia reversa estática com as ferramentas **REA v6.4.0** + **Ghidra 12
 - **Identificação do formato interno de projeto** (campos JSON de segmento/clipe via strings do videoeditor.dll)
 - **Identificação do sistema Lua de migração de versão** de projetos
 
+### Fase 1 — Itens restantes concluídos (2026-10-15)
+
+- **Imports/exports** de `CapCut.exe`, `VECreator.dll`, `cccreator.dll`, `videoeditor.dll`, `lens.dll` (+ `deepagents_capi.dll`, `audioeffect.dll`, `smart_cut.ofx`) via `pefile` — o Ghidra headless foi deixado para a Fase 2 porque só importar o VECreator (271 MB) levaria horas, e as tabelas PE são idênticas.
+- **Strings categorizadas** de VECreator, videoeditor, audioeffect e deepagents_capi (~570 mil strings).
+- **Watermarks**: `infoSticker.lua` e `ani_info.json` (atlas TexturePacker) documentados.
+- **web-manifest.json** (140 SHA-256 conferidos), bundle `renderApp-CIJPeLBB.js` (ponte `cefQuery`), `server.json` do rea e `smart_cut.ofx`.
+- Relatório: `analise/fase1/RELATORIO.md`; resumo na seção 12 da `DOCUMENTACAO.md`; scripts em `analise/scripts/` (`pe_dump.py`, `strings_dump.py`).
+
+**Descobertas que corrigem hipóteses anteriores:**
+- `VECreator.dll` é o **app Qt principal** (não só o renderer); protegido com **VMProtect** (seções `.vmp0-2`) e usa Detours.
+- `lyra_cli_client.dll` **não** é o codec Lyra do Google — `lyra` é um framework interno de edição/IA da ByteDance.
+- `smart_cut.ofx` é **smart crop / auto-reframe** (OpenFX), não corte por silêncio/cena.
+- `deepagents_capi.dll` é **Go** (CloudWeGo Eino), com API C `da_*` e provedores OpenAI/Anthropic/Gemini/Ark/Coze/OpenRouter.
+- O roteiro citava `commonagent/assets/App-*.js`, que não existe; a lógica do commonagent está em `renderApp-*.js`.
+
 ### Arquivos Gerados
+- [README.md](README.md) — Visão geral do repositório (app + análise), como rodar/empacotar, estrutura, limitações. Escrito a partir do código real de `src/` em 2026-10-15
 - [PASSOS.md](PASSOS.md) — Roteiro com checkboxes em 5 fases
 - [DOCUMENTACAO.md](DOCUMENTACAO.md) — Documentação técnica completa
 - [CONTEXTO.md](CONTEXTO.md) — Este arquivo (memória de contexto)
@@ -78,9 +94,9 @@ via engenharia reversa estática com as ferramentas **REA v6.4.0** + **Ghidra 12
 ## ❌ O que ainda falta (Engenharia Reversa)
 
 ### Alta Prioridade
-- [ ] Extrair imports/exports do `VECreator.dll` (271MB) via Ghidra headless
-- [ ] Extrair imports/exports do `videoeditor.dll` (72MB) via Ghidra headless
-- [ ] Identificar e documentar o formato completo do arquivo de draft (projeto salvo)
+- [x] Extrair imports/exports do `VECreator.dll` e `videoeditor.dll` (Fase 1, via pefile)
+- [ ] Análise de funções no Ghidra (Fase 2) — atenção: VECreator.dll tem VMProtect; começar por `videoeditor.dll` (draft) e `cccreator.dll` (API `bef_*`)
+- [ ] Identificar e documentar o formato completo do arquivo de draft (projeto salvo) — pistas: `draft_content.json` + `attachment_*.json`, Crypto++ no videoeditor.dll
 - [ ] Mapear a base URL da API principal (domínio de produção)
 - [ ] Analisar o bridge JavaScript C++ → JS no CEF (`window.capcut.*`)
 - [ ] Analisar `agent_runtime_addon.node` (521KB) — bridge Node.js/Nativo
@@ -247,9 +263,21 @@ LeccorCut/
 
 ---
 
+## ⚠️ Divergências encontradas ao escrever o README (2026-10-15)
+
+A lista "O que já foi implementado" acima descreve o projeto antigo (`D:\0000000-PROJETOS\LeccorCut`). Comparando com o código deste repositório (`leccorCut02/src`):
+
+- **Não existem aqui**: estilos de legenda karaokê/palavra a palavra/viral, presets de speed ramp (Heroico, Bala...), chroma key na UI (só há `colorkey` no `ffmpegBuilder.js`) e fade de áudio.
+- **Existem aqui e não estão na lista**: correção de cor com curvas, lift/gamma/gain, HSL e LUT `.cube`; curva de velocidade editável por pontos; dois modelos de remoção de fundo (`Xenova/modnet` e `briaai/RMBG-1.4`).
+- `package.json` referencia `tests/export-smoke.js` (`npm test`) e `src/icon.ico` (`npm run dist`), mas nenhum dos dois existe neste repositório.
+- A pasta `analise/fase1/` já tem os imports/exports de `CapCut.exe`, `VECreator.dll`, `cccreator.dll`, `videoeditor.dll` e `lens.dll` (gerados por `analise/scripts/pe_dump.py`), mas os checkboxes correspondentes do item 1.1 do `PASSOS.md` continuam desmarcados.
+- No histórico do git, `node_modules/` tinha entrado no stage antes do `.gitignore`. Foi removido do índice com `git rm -r --cached node_modules`.
+
+---
+
 ## 📋 Próximos Passos Recomendados
 
-1. **Imediato**: Usar Ghidra headless para extrair exports do `videoeditor.dll` e mapear o formato de draft completo
+1. **Imediato**: Fase 2 — Ghidra no `videoeditor.dll` para mapear o formato de draft completo (exports/strings já extraídos na Fase 1)
 2. **Curto prazo**: Capturar tráfego de rede do CapCut com proxy MITM para documentar APIs completas
 3. **Médio prazo**: Implementar detecção de cenas e object tracking no LeccorCut
 4. **Longo prazo**: Migrar engine de renderização de FFmpeg CLI para pipeline nativo C++/WebGPU

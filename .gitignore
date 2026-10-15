@@ -32,6 +32,10 @@ temp/
 models/
 *.onnx
 
+# Dumps brutos da engenharia reversa (grandes e derivados de binários de terceiros;
+# regenerar com analise/scripts/*.py)
+analise/**/raw/
+
 # Sistema operacional
 Thumbs.db
 desktop.ini
