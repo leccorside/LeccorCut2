@@ -38,52 +38,108 @@ Prova por fonte (estatico, sem execucao):
 
 ---
 
-## 2) Autenticacao / assinatura
+## 2) Autenticacao / assinatura (consolidado)
 
-* Login: QR (passport16-normal-us-ttp.capcutapi.us/passport/web/check_qrconnect/, www.capcut.net/imlv/scan-login?token=), paginas www.capcut.com/lvpc_web/login*, OAuth Google (accounts.google.com/o/oauth2/v2/auth, client_ids 12865.../76708...), Apple (appleid.apple.com/auth/authorize), Facebook (www.facebook.com/v10.0/dialog/oauth), TikTok (www.tiktok.com/v2/auth/authorize, open.tiktokapis.com). Strings tokenAuth/token_auth (https://%1/tokenAuth, https://%1/token_auth, https://www.capcut.com/tokenAuth?) aparecem em VECreator.dll.
-* Sessao: AGENT_HOST_*/COMMON_AGENT_* injetam APP_ID, DEVICE_ID, CLIENT_INSTANCE_ID, REGION, LANGUAGE; o common-agent expoe host/auth-context e host/app-context em app-server.mjs (/api/agent-runtime/v1/host/auth-context).
-* Assinatura de requisicoes: metasecml.dll e o SDK MSSDK (nao e ML). Ocorre 17x em VECreator.dll e metasecml.dll como MSSDK/mssdk/metasecml; commerce/passport/tnc sao os consumidores (tnc-sg.capcutapi.com, tnc16-alisg.isnssdk.com). CefCreator.dll/VECreator.dll/VEHelper.exe tambem carregam mssdk-sg.* (mssdk-sg.byteoversea.com, mssdk-sg.capcutapi.com, mssdk-v2-boot.capcutapi.com).
-* Transporte: sscronet.dll (Cronet/QUIC/HTTP3) e o stack de rede principal — 338 ocorrencias em VECreator.dll, 229 em DeepAgentsService.dll, tambem em CefCreator.dll, audioeffect.dll, lynx.dll, metasecml.dll. A cadeia e sscronet -> ttnet -> frontier (frontier = edge WS). ttnet-sg.byteoversea.com aparece em 7 binarios; frontier-va.byteoversea.com em VECreator.dll (113x) e ttnet_frontier_addon.node (31x).
+Conclusao: login por QR + paginas lvpc_web + OAuth externo; sessao por identidade de maquina/instancia injetada via ENV no common-agent; assinatura de requisicoes via SDK MSSDK (metasecml.dll). Esquema de assinatura (headers, nonce, payload canonico) e detalhe do token de sessao exigem MITM/Fase 4.
 
-> PASSOS 3.1: Documentar mecanismo de autenticacao -> concluido em estatico. Detalhe do esquema de assinatura (headers, nonce, payload canonico) so com engenharia do metasecml.dll/trafego (Fase 4).
+| Camada | Mecanismo | Evidencia estatica |
+|---|---|---|
+| Login QR | `passport16-normal-us-ttp.capcutapi.us/passport/web/check_qrconnect/`, `www.capcut.net/imlv/scan-login?token=` | urls_agregado.txt |
+| Login web | `www.capcut.com/lvpc_web/` + `login`, `login_proxy`, `login_status` (`?target=bind&platform=google`, `?target=upload&platform=google`, `?target=upload&platform=tiktok`), `login_success`, `share_oauth_success`, `tt_account_bind_guide`; `www.capcutapi.com/lvpc_web/login` | urls_agregado.txt, endpoints_por_host.json (`www.capcut.com` ~35 paths) |
+| OAuth | Google (`accounts.google.com/o/oauth2/v2/auth`, client_ids `12865...`/`76708...` em `*.apps.googleusercontent.com`), Apple (`appleid.apple.com/auth/authorize`), Facebook (`www.facebook.com/v10.0/dialog/oauth`), TikTok (`www.tiktok.com/v2/auth/authorize`, `open.tiktokapis.com` 5 paths, `open-platform.tiktokapis.com` 3 paths) | urls_agregado.txt, dominios_agregado.txt |
+| Token | strings `https://%1/tokenAuth`, `https://%1/token_auth`, `https://www.capcut.com/tokenAuth?` em VECreator.dll | VECreator.dll.strings.urls.txt |
+| Sessao/identidade | `AGENT_HOST_DEV_APP_VERSION/CHANNEL/CLIENT_INSTANCE_ID/DEVICE_ID/LANGUAGE/PLATFORM_CODE/REGION` (+ equivalentes `COMMON_AGENT_DEV_*`); `COMMON_AGENT_FORNAX_REGION/SK`, `COMMON_AGENT_MODEL_TOKEN`; endpoints locais `/api/agent-runtime/v1/host/auth-context`, `/host/app-context` em app-server.mjs | runtime_endpoints.json |
+| Assinatura | `metasecml.dll` = SDK MSSDK (nao e ML), 17x como MSSDK/mssdk/metasecml em VECreator.dll + metasecml.dll; consumidores commerce/passport/tnc (`tnc-sg.capcutapi.com`, `tnc16-alisg.isnssdk.com`, `tnc-boot/v2-boot`); `mssdk-sg.byteoversea.com`, `mssdk-sg.capcutapi.com`, `mssdk-v2-boot.capcutapi.com` tambem em CefCreator.dll/VECreator.dll/VEHelper.exe | strings VECreator, dominios_agregado.txt |
+| Transporte | `sscronet.dll` (Cronet/QUIC/HTTP3) 338x em VECreator.dll, 229x em DeepAgentsService.dll (+ CefCreator, audioeffect, lynx, metasecml); cadeia sscronet -> ttnet (`ttnet-sg.byteoversea.com`, 7 binarios) -> frontier edge WS | Fase 2 + strings |
 
----
+Prova por fonte (estatico, sem execucao):
+* `analise/fase3/raw/urls_agregado.txt`: todas as URLs de login/QR/OAuth/tokenAuth acima.
+* `analise/fase3/raw/endpoints_por_host.json`: `www.capcut.com` (~35 paths lvpc_web), `passport16-normal-us-ttp.capcutapi.us` (`/passport/web/check_qrconnect/`), `open.tiktokapis.com` (5), `open-platform.tiktokapis.com` (3).
+* `analise/fase2/raw/bootstrap_ui/runtime_endpoints.json`: `/api/agent-runtime/v1/host/auth-context`, `/host/app-context` + ENVs de identidade.
+* `analise/fase3/raw/dominios_agregado.txt`: `mssdk-sg.*` (3), `tnc-*` (4), `passport-api-*` (5), `*.apps.googleusercontent.com` (2 client_ids).
 
-## 3) Midia — upload / download
-
-Nao ha um unico /upload documentado nos paths estaticos — o upload e via SDK TOS (ByteDance Object Storage):
-
-* uploader-oversea-2.1.11.js (app/commonagent/vendor) + BytedUploader expoem Blob/FileReader/FormData (analise/fase2/raw/bootstrap_ui/js_bridge_scan.json).
-* Hosts TOS/CDN: lf16-beecdn.ibytedtos.com, lf16-capcut.faceulv.com, sf16-sg.tiktokcdn.com, sf16-va.tiktokcdn.com, sf16-web-tos-buz.capcutstatic.com, imagex-ap-singapore-1.bytevcloudapi.com, vod-ap-singapore-1.bytevcloudapi.com (e variantes *-us-east-1). DLLs ever_cloud_sdk.dll (9 MB) e res_pool.dll (9 MB) sao o lado nativo.
-* Endpoints indiretos: cloudspace-normal.capcutapi.com (drive) e i18n-api.faceueditor.com/artist/v1/upload/data.
-
-Download de assets segue o mesmo TOS + imagex/vod + capcutstatic.com. Sem trafego, os paths exatos de PUT/GET do objeto nao sao recuperaveis — ficam para MITM.
-
-> PASSOS 3.1: Mapear APIs de upload/download de midia -> parcial em estatico (familia identificada, hosts TOS confirmados, paths exatos pendentes de runtime).
-
----
-
-## 4) Efeitos / templates / stickers (cloud assets)
-
-* Familias editoriais: editor-api.* (/lv/v1/custom_service/get_entrance*, /lv/v2/, /agent_edit_api/query_skills) e feed-api.* (/lv/v1/ad_maker/digital_human/*, /lv/v1/pc/replicate/get_collections, /lv/v1/music_beat, /lv/v2/music_beat).
-* Comercio (gate de assets pagos): /commerce/v1/subscription/*, /commerce/v1/benefits/*, /commerce/v1/purchase/*, /lv/v1/commerce/get_entrances, services-Bqx5Pz17.js (ICommercialBenefitService).
-* AIGC catalog: heycan-api.capcutapi.com/artist/v1/aigc_effect/user_aigc_list, alem de aigc/task e aigc_text_template em VECreator.dll/Resources.
-* Recursos locais espelham o catalogo remoto: Resources/CloudMaterial, Resources/template_sticker, Resources/aigc_text_template, Resources/lynx_config.
-
-> PASSOS 3.1: Mapear APIs de efeitos/templates/stickers -> parcial em estatico (hosts e familias confirmados, catalogo completo exige crawling autenticado).
+> PASSOS 3.1: Documentar mecanismo de autenticacao (token/sessao) -> concluido em estatico (fluxos e pontos de assinatura mapeados). Detalhe do esquema de assinatura (headers, nonce, payload canonico) e do token de sessao so com MITM/Fase 4.
 
 ---
 
-## 5) Exportacao e watermark
+## 3) Midia — upload / download (consolidado)
 
-* Flags de exportacao: em App-DpNZSMvJ.js ha downloadWithoutWatermark / downloadWithWatermark (pc_omni_agent_export_without_watermark / with_watermark) e commercial_strategy_v2 / material_user_assets / credit_strategy — a permissao de export sem marca e um beneficio comercial (/commerce/v1/benefits/*).
-* Invisible watermark: modelo local Resources/models/invisible_watermark/ + 6 ocorrencias em VECreator.dll e 3 em cccreator.dll / 2 em ttdaemon.exe; lado nativo em lens/pipeline TE (Fase 2).
-* C2PA: tt_c2pa_sdk.dll (8 MB). Em VECreator.dll ha 37 ocorrencias C2PA/c2pa e namespaces XMP http://ns.adobe.com/*, http://ns.adobe.com/creatorAtom/1.0/ etc., indicando proveniencia C2PA embarcada no export.
+Conclusao: nao ha um unico /upload documentado nos paths estaticos — o upload e via SDK TOS (ByteDance Object Storage), com lado JS (uploader-oversea + BytedUploader) e lado nativo (ever_cloud_sdk.dll 8,4 MB, res_pool.dll 8,4 MB, uploader.dll 1,2 MB). Paths exatos de PUT/GET do objeto exigem MITM (roteiro pronto no runbook-mitm.md, fluxo 7).
 
-> PASSOS 3.1: Mapear APIs de exportacao e watermark + 3.2: investigar invisible_watermark / C2PA -> concluido em estatico (mecanismo identificado, detalhe do payload C2PA/invisible requer amostra exportada).
+| Camada | Componente | Evidencia estatica |
+|---|---|---|
+| SDK JS | `app/commonagent/vendor/uploader-oversea-2.1.11.js` expoe `Blob`, `FileReader`, `FormData`, `LogPluginObject`, `ProgressEvent`; `BytedUploader` em `app/commonagent/assets/AgentHubTask-CF1zzZ02.js` | js_bridge_scan.json |
+| SDK nativo | `ever_cloud_sdk.dll` (8,4 MB), `res_pool.dll` (8,4 MB), `uploader.dll` (1,2 MB) | instalacao 9.6.0.4097 |
+| TOS/CDN (hosts) | `lf16-beecdn.ibytedtos.com`, `lf16-capcut.faceulv.com`, `sf16-sg.tiktokcdn.com`, `sf16-va.tiktokcdn.com`, `sf16-web-tos-buz.capcutstatic.com`, `imagex-ap-singapore-1.bytevcloudapi.com` + variante `imagex-us-east-1`, `vod-ap-singapore-1.bytevcloudapi.com` + variante `vod-us-east-1` | dominios_agregado.txt |
+| Objetos (paths) | `/obj/ies-fe-bee-sg/bee_prod/biz_141/tos_*.mp4` (lf16-beecdn), `/obj/capcutpc-packages-sg/CCWinConfig/` (lf16-capcut), `/obj/eden-sg/.../mute_audio_{4,8,12}_second.mp3` + `/obj/eden-sg/.../text_style_pic.png` (sf16-sg), `/obj/eden-va2/.../EffectUpload/GifGenRes/en` (sf16-va), `/obj/capcut-web-buz-sg/common/others/vocab.txt` (sf16-web-tos-buz) | urls_agregado.txt, endpoints_por_host.json |
+| Endpoints indiretos | `cloudspace-normal.capcutapi.com` (drive) e `i18n-api.faceueditor.com/artist/v1/upload/data` | urls_agregado.txt |
+
+Download de assets segue o mesmo TOS + imagex/vod + capcutstatic.com. Padrao de path observado: `/obj/<bucket>-<regiao>/<app>/<recurso>` (ex. `eden-sg`, `capcut-web-buz-sg`).
+
+> PASSOS 3.1: Mapear APIs de upload/download de midia -> parcial em estatico (SDK JS+nativo, familias TOS e padrao de path confirmados; PUT/GET exatos pendentes de runtime via MITM).
 
 ---
 
-## 6) Geracao de video/imagem por IA (cloud)
+## 4) Efeitos / templates / stickers (cloud assets) (consolidado)
 
-Catalogo ja extraido na Fase 1 (bundle 
+Conclusao: catalogo remoto por familia editorial (editor-api + feed-api), gate comercial via commerce-api, AIGC via heycan-api + Dreamina; recursos locais em Resources/ espelham o catalogo remoto. Catalogo completo exige crawling autenticado (MITM fluxo 3/4/6).
+
+| Familia | Endpoints / hosts | Evidencia estatica |
+|---|---|---|
+| Editoriais | `editor-api.capcutapi.com`: `/agent_edit_api/query_skills`, `/lv/v1/custom_service/get_entrance{,_allow_guest}` (+ variante com typo `get_eentrance_allow_guest`); `editor-api-va.capcutapi.com/lv/v2/` | endpoints_por_host.json, urls_agregado.txt |
+| Feed/home | `feed-api.capcutapi.com`: `/lv/v1/ad_maker/digital_human/get_config`, `/get_panel_data`, `/lv/v1/music_beat`, `/lv/v2/music_beat`, `/lv/v1/pc/replicate/get_collections`, `/lv/v1/homepage/profile` (via -sg), `/cc/v1/workspace` (via -va-us) | endpoints_por_host.json |
+| Comercio (gate pagos) | `commerce-api.capcutapi.com` (hosts confirmados; paths `/commerce/v1/subscription/*`, `/benefits/*`, `/purchase/*`, `/lv/v1/commerce/get_entrances` vindos do bundle `App-DpNZSMvJ.js` Fase 1); `services-Bqx5Pz17.js` (ICommercialBenefitService, video-studio); `www.capcut.com/commerce/vip-redeem` | Fase 1, js_bridge_scan.json |
+| AIGC catalogo | `heycan-api.capcutapi.com/artist/v1/aigc_effect/user_aigc_list`; `dreamina.capcut.com/ai-tool/{asset,home}` (asset exige login); strings `aigc/task` e `aigc_text_template` em VECreator.dll/Resources | urls_agregado.txt |
+| Assets binarios | `/obj/eden-va2/.../EffectUpload/GifGenRes/en` (sf16-va); padrao `/obj/<bucket>/<app>/EffectUpload/...` | urls_agregado.txt |
+| Espelho local | `Resources/CloudMaterial/` (3 icones default), `Resources/template_sticker/` (`config.json` plugin `lv_plugin_com.lv.template_gray-filter` v10.1.0 + `js/template/template.js`), `Resources/aigc_text_template/` (`content.json`, `extra.json` com `depend_resource_list`, `depends`), `Resources/lynx_config/` (29 arquivos, telas de subscription/credits/message-center) | instalacao 9.6.0.4097 |
+
+> PASSOS 3.1: Mapear APIs de efeitos/templates/stickers -> parcial em estatico (hosts, familias e espelho local confirmados; catalogo completo exige crawling autenticado via MITM).
+
+---
+
+## 5) Exportacao e watermark (consolidado)
+
+Conclusao: export sem marca e um beneficio comercial (gate em /commerce/v1/benefits/*); watermark invisivel e C2PA sao aplicados localmente no export (modelo + SDK nativo). Nenhum endpoint de rede dedicado a exportacao foi encontrado — o fluxo e local + gate comercial.
+
+| Camada | Mecanismo | Evidencia estatica |
+|---|---|---|
+| Gate comercial | flags `downloadWithoutWatermark` / `downloadWithWatermark` (`pc_omni_agent_export_without_watermark` / `with_watermark`), `commercial_strategy_v2`, `material_user_assets`, `credit_strategy`, `limitfree_strategy`, `subscribe_strategy`, `kmp_commercial_http_api_setting_service`, preview `previewMediaWatermarkFreeUrl` vs `previewMediaWatermarkUrl` | `App-DpNZSMvJ.js` via video_studio_scan.json |
+| Brand/AI visivel | `CapCut.png` (logo animado nos exports gratuitos), `CapCutAI.png` (conteudo gerado por IA); animacoes em `ani_info.json` + `infoSticker.lua` | DOCUMENTACAO §10.2, Fase 1 |
+| Invisible | modelo local `Resources/models/invisible_watermark/` + 6 ocorrencias em VECreator.dll, 3 em cccreator.dll, 2 em ttdaemon.exe; lado nativo em lens/pipeline TE (Fase 2); draft tem `attachment_watermark_info.json` | strings Fase 1, Fase 2 |
+| C2PA | `tt_c2pa_sdk.dll` (8 MB); 37 ocorrencias C2PA/c2pa em VECreator.dll + namespaces XMP `http://ns.adobe.com/*`, `creatorAtom/1.0` — proveniencia embarcada no export | strings VECreator (classes_rtti 15, flags_config 11, mensagens/recursos 1+1), DOCUMENTACAO |
+
+> PASSOS 3.1: Mapear APIs de exportacao e watermark + 3.2: investigar invisible_watermark / C2PA -> concluido em estatico (gate comercial + mecanismos locais identificados; detalhe do payload C2PA/invisible requer amostra exportada).
+
+---
+
+## 6) Geracao de video/imagem por IA (cloud) (consolidado)
+
+Conclusao: geracao 100% cloud via gateway heycan + modelhub + Dreamina; catalogo de modelos extraido da Fase 1 (bundle JS). Agente LLM local (deepagents_capi.dll, Go/Eino) orquestra via provedores Ark/OpenAI/Gemini/Coze/OpenRouter. Endpoints de job (submit/poll) exigem MITM (roteiro fluxo 6).
+
+| Camada | Modelos / endpoints | Evidencia estatica |
+|---|---|---|
+| Video (SeedDance) | 1.5 T2V 720p (`ai_hub_video_seedance15_720`); 2.0 I2V/R2V/Fast/Mini (480p–4K); 2.5 I2V/R2V (480p–1080p) | DOCUMENTACAO §7.2 (Fase 1, bundle) |
+| Video (terceiros) | MiniMax H3 768p/2K; Gemini Omni Flash 720p; DreamActor avatar 480p/720p | DOCUMENTACAO §7.2 |
+| Imagem | SeedDream 4.3/4.5/5/5Pro (1K–4K); NanoBanana 1/2 (1K–4K); GPT-Image2 medium (1K/2K) | DOCUMENTACAO §7.2 |
+| Gateway geracao | `heycan-api.capcutapi.com` (`/artist/v1/aigc_effect/user_aigc_list`), `heycan-v2-boot`, `api-heycan-pc-sg.capcut.com`; `aidp-i18ntt-sg.tiktok-row.net/api/modelhub/online/v2/crawl` (ak=<REDACTED> no extrator); `dreamina.capcut.com/ai-tool/{asset,home}` | urls_agregado.txt, dominios_agregado.txt |
+| Agente LLM | `deepagents_capi.dll` Go 42 MB (CloudWeGo Eino; API C `da_*`: `da_loader_configure`, `da_get_api_table`, `da_set_log_callback`); adaptadores `model/ark` (Volcengine `ark.cn-beijing.volces.com/api/v3`), `model/openai` (`api.openai.com/v1`), `model/gemini`, refs Coze (`api.coze.cn`) e OpenRouter (`openrouter.ai/api/v1`) | Fase 2 (2.4-2.5), strings deepagents_capi |
+| Skills/MCP | `/api/common-agent/v1/{skills, user-skills, mcp-connections, agent-profiles}`, `/api/agent-runtime/v1/debug/{pc-login-poll, canvas-cli, ailab-test-login}`; base URLs `COMMON_AGENT_MODEL_ENDPOINT`, `COMMON_AGENT_AILAB_AGENT_BASE_URL`, `COMMON_AGENT_AILAB_EDITOR_BASE_URL` | renderApp bundle (Fase 1), runtime_endpoints.json |
+
+> PASSOS 3.1: Mapear APIs de geracao de video por IA (SeedDance, etc.) -> parcial em estatico (catalogo de modelos + gateways + agente LLM mapeados; endpoints de job submit/poll exigem MITM autenticado).
+
+---
+
+## 7) Verificacao de licenca / assinatura / integridade (consolidado)
+
+Conclusao: nao ha servidor de licenca dedicado — o modelo e freemium com gate comercial (login + beneficios/assinatura via commerce-api) + camadas locais de anti-tamper. A verificacao de "licenca" de um recurso (ex. template, overdub) e feita via login + entrance verify + assinatura MSSDK da resposta.
+
+| Camada | Mecanismo | Evidencia estatica |
+|---|---|---|
+| Gate de recurso pago | `[CommerceHttpClientMgr] response %s: sign empty` / `verify sign error` / `response null`; `[VIMO_BANNER] skip single resource by entrance verify, resource_key=%s, plan_id=%s`; `tryEnterOverdub LoginAndPhoneLicenseCheck {login, phone license} failed/succeed` | VECreator.dll.strings.mensagens.txt |
+| TNC (rede de confianca) | hosts `tnc-sg.capcutapi.com`, `tnc-boot/v2-boot.capcutapi.com`, `tnc16-alisg.isnssdk.com`; log `[Network Dispatch State] When the TNC changes for the first time, it is not initialized` | dominios_agregado.txt, mensagens.txt |
+| Assinatura PE | cadeia DigiCert G4 CodeSigning RSA4096 (`cacerts.digicert.com`, `crl3/crl4.digicert.com`, `ocsp.digicert.com`) + Sectigo timestamping (`crt/crl.sectigo.com`, `ocsp.sectigo.com`) + USERTrust (`crl.usertrust.com`) | urls_agregado.txt |
+| Anti-tamper local | VMProtect (secoes `.vmp0-2` no VECreator), `VESafeGuard.dll` (chamado no stub antes do app), `metasecml.dll` (SDK seguranca/anti-tamper), Microsoft Detours (`.detourc/.detourd`), `IsDebuggerPresent` (encontrado, ver PASSOS 3.2) | Fase 2 (2.1, 2.3) |
+| Integridade de assets | `web-manifest.json` (140 SHA-256, Fase 1) + `package_info.json`/`version.json` por modelo (ex. `ccc_segment_js` com lista SHA-256); `<verify enable="0"/>` em `ProductInfo.xml` (verificacao de pacote desligada nesta build) | Fase 1, Fase 2 (2.1.2, 2.4) |
+| Launcher | `Apps\CapCut.exe` = JianyingLauncher renomeado (`JianyingLauncher.pdb`, export `JianyingLauncher.exe`); falha de carga: `JianyingPro load ve creator dll failed!!! error_code(%d), path(%s)!` | Fase 2 (2.1.1) |
+
+> PASSOS 3.1: Identificar mecanismo de verificacao de licenca/assinatura -> concluido em estatico (modelo freemium + gate comercial + anti-tamper mapeados). Bypass/hook fica para Fase 4 (Frida em `metasecml.dll` + `sscronet.dll`, ver PASSOS 4.1). 

@@ -105,7 +105,7 @@ via engenharia reversa estática com as ferramentas **REA v6.4.0** + **Ghidra 12
 - [x] Extrair imports/exports do `VECreator.dll` e `videoeditor.dll` (Fase 1, via pefile)
 - [x] Análise de funções no Ghidra (Fase 2) — `videoeditor.dll` (VECreator.dll tem VMProtect)
 - [x] Identificar e documentar o formato completo do arquivo de draft — JSON, ver `analise/fase2/2.3-motor-edicao.md`
-- [ ] Fase 3 — rede/APIs (hosts já levantados na Fase 1) e Fase 4 — análise dinâmica (IPC por processo)
+- [x] Fase 3 — rede/APIs: 3.1 concluída no estático (13/13 — base URL multi-host, runbook MITM + addon, autenticação, upload/download TOS, efeitos/templates, exportação/watermark, geração IA, licença/assinatura; ver `analise/fase3/RELATORIO.md` §1-7). Pendente: execução da captura MITM pelo usuário + Fase 4 — análise dinâmica (IPC por processo)
 - [x] Mapear a base URL da API principal — concluído no estático: multi-host por família/região (`capcutapi.com`/`byteoversea.com`, espelhos `-sg`/`-va`/`-us-ttp`, gateways `-v2-boot`); ver `analise/fase3/RELATORIO.md` §1. Host ativo por região exige MITM (Fase 4)
 - [ ] Analisar o bridge JavaScript C++ → JS no CEF (`window.capcut.*`)
 - [ ] Analisar `agent_runtime_addon.node` (521KB) — bridge Node.js/Nativo

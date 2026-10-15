@@ -124,12 +124,12 @@
 - [x] `/lv/v1/commerce/get_entrances` — Pontos de entrada comerciais
 - [x] Mapear base URL da API (host principal) — multi-host por família/região (ver analise/fase3/RELATORIO.md §1)
 - [x] Capturar tráfego de rede em runtime (proxy MITM) — runbook + addon prontos (`analise/fase3/runbook-mitm.md`, `analise/scripts/mitm_capcut.py`); execução fica com o usuário
-- [ ] Documentar mecanismo de autenticação (token/sessão)
-- [ ] Mapear APIs de upload/download de mídia
-- [ ] Mapear APIs de efeitos, templates, stickers (cloud assets)
-- [ ] Mapear APIs de exportação e watermark
-- [ ] Mapear APIs de geração de vídeo por IA (SeedDance, etc.)
-- [ ] Identificar mecanismo de verificação de licença/assinatura
+- [x] Documentar mecanismo de autenticação (token/sessão) — fluxos QR/lvpc_web/OAuth + identidade via ENV + assinatura MSSDK (ver analise/fase3/RELATORIO.md §2)
+- [x] Mapear APIs de upload/download de mídia — SDK TOS (uploader-oversea + BytedUploader + ever_cloud_sdk/res_pool/uploader.dll) e padrão de path /obj/* (ver analise/fase3/RELATORIO.md §3); PUT/GET exatos pendentes de MITM
+- [x] Mapear APIs de efeitos, templates, stickers (cloud assets) — famílias editor-api/feed-api, gate commerce-api, AIGC heycan+Dreamina, espelho local em Resources/ (ver analise/fase3/RELATORIO.md §4); catálogo completo exige crawling autenticado
+- [x] Mapear APIs de exportação e watermark — gate comercial downloadWithout/WithWatermark + invisible local + C2PA embarcado (ver analise/fase3/RELATORIO.md §5); sem endpoint de rede dedicado
+- [x] Mapear APIs de geração de vídeo por IA (SeedDance, etc.) — catálogo SeedDance/MiniMax/Gemini/SeedDream/NanoBanana/GPT-Image2 + gateway heycan/modelhub + agente deepagents (ver analise/fase3/RELATORIO.md §6); job submit/poll exige MITM
+- [x] Identificar mecanismo de verificação de licença/assinatura — freemium + gate comercial (entrance verify + sign) + anti-tamper local (ver analise/fase3/RELATORIO.md §7)
 
 ### 3.2 Proteção e Anti-Análise
 - [ ] Verificar obfuscação de código JS (webpack/vite minificado — confirmado)
@@ -198,7 +198,7 @@
 |------|-----------|------------|
 | Fase 1 — Reconhecimento Estático | 🟢 Concluída (100%) | 🔴 Alta |
 | Fase 2 — Arquitetura e Componentes | 🟢 Concluída (97% — IPC por processo fica para a Fase 4) | 🔴 Alta |
-| Fase 3 — Rede e APIs | 🔴 Iniciado (20%) | 🟡 Média |
+| Fase 3 — Rede e APIs | 🟡 Estático concluído (3.1 100% — 5 prévios + 8 novos; runbook MITM pronto, execução pendente) | 🟡 Média |
 | Fase 4 — Análise Dinâmica | ⚪ Não iniciado | 🟡 Média |
 | Fase 5 — Aplicação ao LeccorCut | 🟡 Em andamento (40%) | 🟢 Contínuo |
 
