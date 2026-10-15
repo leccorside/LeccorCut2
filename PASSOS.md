@@ -122,8 +122,8 @@
 - [x] `/commerce/v1/subscription/*` — Assinaturas e planos
 - [x] `/commerce/v1/benefits/*` — Créditos e benefícios
 - [x] `/lv/v1/commerce/get_entrances` — Pontos de entrada comerciais
-- [ ] Mapear base URL da API (host principal)
-- [ ] Capturar tráfego de rede em runtime (proxy MITM)
+- [x] Mapear base URL da API (host principal) — multi-host por família/região (ver analise/fase3/RELATORIO.md §1)
+- [x] Capturar tráfego de rede em runtime (proxy MITM) — runbook + addon prontos (`analise/fase3/runbook-mitm.md`, `analise/scripts/mitm_capcut.py`); execução fica com o usuário
 - [ ] Documentar mecanismo de autenticação (token/sessão)
 - [ ] Mapear APIs de upload/download de mídia
 - [ ] Mapear APIs de efeitos, templates, stickers (cloud assets)

@@ -106,12 +106,12 @@ via engenharia reversa estática com as ferramentas **REA v6.4.0** + **Ghidra 12
 - [x] Análise de funções no Ghidra (Fase 2) — `videoeditor.dll` (VECreator.dll tem VMProtect)
 - [x] Identificar e documentar o formato completo do arquivo de draft — JSON, ver `analise/fase2/2.3-motor-edicao.md`
 - [ ] Fase 3 — rede/APIs (hosts já levantados na Fase 1) e Fase 4 — análise dinâmica (IPC por processo)
-- [ ] Mapear a base URL da API principal (domínio de produção)
+- [x] Mapear a base URL da API principal — concluído no estático: multi-host por família/região (`capcutapi.com`/`byteoversea.com`, espelhos `-sg`/`-va`/`-us-ttp`, gateways `-v2-boot`); ver `analise/fase3/RELATORIO.md` §1. Host ativo por região exige MITM (Fase 4)
 - [ ] Analisar o bridge JavaScript C++ → JS no CEF (`window.capcut.*`)
 - [ ] Analisar `agent_runtime_addon.node` (521KB) — bridge Node.js/Nativo
 
 ### Média Prioridade
-- [ ] Capturar tráfego de rede real via proxy MITM durante uso do CapCut
+- [x] Capturar tráfego de rede real via proxy MITM — runbook pronto (mitmproxy 12.2.3 instalado; bloqueio QUIC temporário p/ forçar fallback TCP; roteiro de 9 fluxos por família de host; addon `mitm_capcut.py` gera `endpoints_mitm_por_host.json`). Execução da captura fica com o usuário
 - [ ] Analisar `deepagents_capi.dll` (42MB) — API C de modelos de IA
 - [ ] Analisar `smart_cut.ofx.bundle` — plugin de corte inteligente
 - [ ] Mapear como modelos `.model` e `.bytenn` são carregados
